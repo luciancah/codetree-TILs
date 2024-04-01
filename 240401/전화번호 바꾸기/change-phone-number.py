@@ -1,10 +1,10 @@
 num = input()
-f, s, t = str(num.split('-'))
+f, s, t = num.split('-')
 res = ''
 
 res += f
 res += '-'
 res += t 
-res += ' '
+res += '-'
 res += s
 print(res)
