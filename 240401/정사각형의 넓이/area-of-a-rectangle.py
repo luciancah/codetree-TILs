@@ -2,5 +2,5 @@ n = int(input())
 res = n*n
 
 print(res)
-if res < 5:
+if n < 5:
     print('tiny')
