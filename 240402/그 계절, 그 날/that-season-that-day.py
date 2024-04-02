@@ -20,9 +20,10 @@ def validCheck(y, m, d):
 
 
 def solution(y, m, d):
-    if not febCheck(y, m, d):
-        print(-1)
-        return
+    if m == 2:
+        if not febCheck(y, m, d):
+            print(-1)
+            return
     
     if not validCheck(y, m, d):
         print(-1)
