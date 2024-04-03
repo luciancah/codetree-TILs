@@ -1,0 +1,13 @@
+a, b = list(map(int, input().split()))
+n = int(input())
+
+# a진수 n -> 10진수 m으로 바꾸기
+m = int(str(n), a)
+
+def calc(num, base, ans=''):
+    if num == 0:
+        print(ans)
+        return
+    ans += str(num % base)
+    print(num, base, ans)
+    calc(num // base, base, ans)
