@@ -15,6 +15,6 @@ for position in positions:
 
     if direction == 'R':
         for x in range(int(dist)):
-            line[current + x] += 1
+            line[current + x - 1] += 1
 
-print(max(line))
+print(len([x for x in line if x >= 2]))
