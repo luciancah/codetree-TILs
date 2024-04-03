@@ -1,13 +1,14 @@
 n = int(input())
 positions = []
-current = 500
+current = 1000
 
-line = [''] * 1001
+line = [''] * 2001
 for i in range(n):
     positions += [list(map(str, input().split()))]
 
 for position in positions:
     dist, direction = position
+
 
     if direction == 'L':
         for _ in range(int(dist)):
