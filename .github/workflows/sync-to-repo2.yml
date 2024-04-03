@@ -34,15 +34,19 @@ jobs:
 
       - name: Sync changes to specific directory, including submodules
         run: |
-          # First, ensure submodule contents are fully checked out
+          # Navigate to the source repository
           cd source_repo
+      
+          # Initialize and update submodules
           git submodule update --init --recursive
-
+      
+          # Ensure the target directory exists
           mkdir -p ../target_repo/PS/codetree/
-          rsync -av --delete . ../target_repo/PS/codetree/
-          
-          rsync -av path/to/submodule/ ../target_repo/PS/codetree/path/to/submodule/
-
+      
+          # Copy the entire source repository, including submodules, to the target directory
+          rsync -av --exclude='.git' . ../target_repo/PS/codetree/
+      
+          # Navigate to the target repository for committing changes
           cd ../target_repo
           git add .
           git commit -m "Sync changes to /PS/codetree directory, including submodule contents"
