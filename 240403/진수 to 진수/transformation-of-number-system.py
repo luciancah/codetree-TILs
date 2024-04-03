@@ -6,7 +6,7 @@ m = int(str(n), a)
 
 def calc(num, base, ans=''):
     if num == 0:
-        ans.revserse()
+        ans = ans[::-1]
         print(ans)
 
         return ans
