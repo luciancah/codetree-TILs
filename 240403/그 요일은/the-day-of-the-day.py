@@ -4,12 +4,13 @@ daysDiff = 0
 dates = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
-# 사이에 온전한 월의 일들 더하기
-if m2 - m1 >= 1:
-    for i in range(m1+1, m2):
-        daysDiff += dates[i]
-
 if m1 < m2:
+
+    # 사이에 온전한 월의 일들 더하기
+    if m2 - m1 >= 1:
+        for i in range(m1+1, m2):
+            daysDiff += dates[i]
+            
     # m1월의 d1일부터 말일까지 남은 일 더하기
     daysDiff += (dates[m1] - d1)
 
@@ -19,6 +20,7 @@ if m1 < m2:
     # A요일 diff만큼 빼기
 
     daysDiff -= days.index(day)
+
 
 else:
     daysDiff += (d2 - d1)
