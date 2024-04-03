@@ -33,7 +33,7 @@ jobs:
 
       - name: Sync directory to target repository
         run: |
-          rsync -av --delete source_repo/ target_repo/PS/codetree/
+          rsync -av --delete --exclude='.git/' source_repo/ target_repo/PS/codetree/
           cd target_repo
           git add .
           git commit -m "Sync files to /PS/codetree directory" || echo "No changes to commit"
