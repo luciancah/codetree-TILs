@@ -1,6 +1,6 @@
 n = int(input())
 positions = []
-line = [0] * 100
+line = [0] * 1000
 
 for i in range(n):
     positions += [list(map(int, input().split()))]
