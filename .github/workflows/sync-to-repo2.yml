@@ -2,7 +2,7 @@ name: Sync to Repository2
 
 on:
   schedule:
-    - cron: '0 10 * * *'  # Runs at 10:00 UTC (exacts as 01:00 KST)
+    - cron: "0 10 * * *" # Runs at 10:00 UTC (exacts as 01:00 KST)
   workflow_dispatch:
 
 permissions:
@@ -16,15 +16,14 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
         with:
-          path: 'source_repo'
-          submodules: 'recursive'
+          path: "source_repo"
 
       - name: Setup Git
         run: |
           cd source_repo
           git config --global user.email "luciancah@gmail.com"
           git config --global user.name "luciancah"
-          git config --unset-all http.https://github.com/.extraheader        
+          git config --unset-all http.https://github.com/.extraheader
 
       - name: Clone target repository
         run: |
@@ -32,30 +31,12 @@ jobs:
         env:
           REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
 
-      - name: Sync changes to specific directory, including submodules
+      - name: Sync directory to target repository
         run: |
-          # Navigate to the source repository
-          cd source_repo
-      
-          # Initialize and update submodules
-          git submodule update --init --recursive
-      
-          # Ensure the target directory exists
-          mkdir -p ../target_repo/PS/codetree/
-      
-          # Copy the entire source repository, including submodules, to the target directory
-          rsync -av --exclude='.git' . ../target_repo/PS/codetree/
-      
-          # Navigate to the target repository for committing changes
-          cd ../target_repo
+          rsync -av --delete source_repo/ target_repo/PS/codetree/
+          cd target_repo
           git add .
-          git commit -m "Sync changes to /PS/codetree directory, including submodule contents" || echo "No changes to commit"
+          git commit -m "Sync files to /PS/codetree directory" || echo "No changes to commit"
           git push --set-upstream origin main
         env:
           REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
-
-
-      - name: Display submodule status
-        run: |
-          cd source_repo
-          git submodule status
