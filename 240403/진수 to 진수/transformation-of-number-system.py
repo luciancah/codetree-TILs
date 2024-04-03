@@ -6,7 +6,8 @@ m = int(str(n), a)
 
 def calc(num, base, ans=''):
     if num == 0:
-        print(reversed(ans))
+        ans.revserse()
+        print(ans)
 
         return ans
     ans += str(num % base)
