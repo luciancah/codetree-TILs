@@ -1,9 +1,9 @@
 n = int(input())
 positions = []
-current = 100000
+current = 100
 
 
-line = [''] * 200001
+line = [''] * 201
 for i in range(n):
     positions += [list(map(str, input().split()))]
 
@@ -21,6 +21,6 @@ for position in positions:
             current += 1
             line[current - 1] = 'black'
 
-
+print(line)
 
 print(len([x for x in line if x == 'white']), len([x for x in line if x == 'black']))
