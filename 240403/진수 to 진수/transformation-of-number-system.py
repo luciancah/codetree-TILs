@@ -6,10 +6,9 @@ m = int(str(n), a)
 
 def calc(num, base, ans=''):
     if num == 0:
-        print(num, base, ans)
+        print(ans)
         return ans
     ans += str(num % base)
-    print(num, base, ans)
     calc(num // base, base, ans)
 
 calc(m, b)
