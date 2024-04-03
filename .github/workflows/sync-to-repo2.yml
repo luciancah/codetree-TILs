@@ -20,6 +20,7 @@ jobs:
 
       - name: Setup Git
         run: |
+          cd source_repo
           git config --global user.email "luciancah@gmail.com"
           git config --global user.name "luciancah"
           git config --unset-all http.https://github.com/.extraheader        
