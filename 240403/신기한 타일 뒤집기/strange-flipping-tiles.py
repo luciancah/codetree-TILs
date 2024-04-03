@@ -1,8 +1,9 @@
 n = int(input())
 positions = []
-current = 1000
+current = 10000
 
-line = [''] * 2001
+
+line = [''] * 20001
 for i in range(n):
     positions += [list(map(str, input().split()))]
 
