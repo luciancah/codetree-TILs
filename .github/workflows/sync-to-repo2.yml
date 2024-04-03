@@ -5,6 +5,9 @@ on:
     - cron: '0 10 * * *'  # Runs at 10:00 UTC (exacts as 01:00 KST)
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   push-to-repository2:
     runs-on: ubuntu-latest
