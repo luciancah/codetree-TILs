@@ -32,16 +32,24 @@ jobs:
         env:
           REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
 
-      - name: Sync changes to specific directory
+      - name: Sync changes to specific directory, including submodules
         run: |
-          rsync -av --delete source_repo/ target_repo/PS/codetree/
-          cd target_repo
+          # First, ensure submodule contents are fully checked out
+          cd source_repo
+          git submodule update --init --recursive
+
+          mkdir -p ../target_repo/PS/codetree/
+          rsync -av --delete . ../target_repo/PS/codetree/
+          
+          rsync -av path/to/submodule/ ../target_repo/PS/codetree/path/to/submodule/
+
+          cd ../target_repo
           git add .
-          git commit -m "Sync changes to /PS/codetree directory"
-          # Consider whether you want to force push
+          git commit -m "Sync changes to /PS/codetree directory, including submodule contents"
           git push --set-upstream origin main
         env:
           REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+
 
       - name: Display submodule status
         run: |
