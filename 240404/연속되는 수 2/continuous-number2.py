@@ -8,7 +8,7 @@ count = 0
 
 for i in range(len(numbers)):
     if i == 0:
-        counts.append(1)
+        count = 1
     if numbers[i] == numbers[i-1]:
         count += 1
         if i == len(numbers) - 1:
