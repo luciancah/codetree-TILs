@@ -1,20 +1,13 @@
 n = int(input())
-numbers = []
+numbers = [int(input()) for _ in range(n)]
+
+ans, count = 0, 0
 for i in range(n):
-    numbers += input()
-
-counts = []
-count = 0
-
-for i in range(len(numbers)):
-    if i == 0:
-        count = 1
-    if numbers[i] == numbers[i-1]:
+    if i >= 1 and numbers[i] == numbers[i-1]:
         count += 1
-        if i == len(numbers) - 1:
-            counts.append(count)
     else:
-        counts.append(count)
-        count=1
+        count = 1
 
-print(max(counts))
+    ans = max(ans, count)
+
+print(ans)
