@@ -1,5 +1,5 @@
-offset = 101
-matrix = [[0 for _ in range(202)] for _ in range(202)]
+offset = 1001
+matrix = [[0 for _ in range(2002)] for _ in range(2002)]
 count = 0
 positions = []
 answers = []
@@ -17,8 +17,8 @@ for index, values in enumerate(positions):
             matrix[i][j] += c
             
 
-for i in range(0, 202):
-        for j in range(0, 202):
+for i in range(0, 2002):
+        for j in range(0, 2002):
             if matrix[i][j] == 1:
                 answers += [[i-offset, j-offset]]
 
