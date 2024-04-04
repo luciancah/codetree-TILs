@@ -23,9 +23,10 @@ for i in range(0, 2002):
             if matrix[i][j] == 1:
                 answers += [[i, j]]
 
-x_length = answers[-1][0] - answers[0][0] + 1
-y_length = answers[-1][1] - answers[0][1] + 1
+if len(answers) == 0:
+    print(0)
 
-
-
-print(x_length * y_length)
+else:
+    x_length = answers[-1][0] - answers[0][0] + 1
+    y_length = answers[-1][1] - answers[0][1] + 1
+    print(x_length * y_length)
