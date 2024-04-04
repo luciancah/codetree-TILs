@@ -12,7 +12,7 @@ for index, values in enumerate(positions):
     x2, y2 = x1 + 8, y1 + 8
     for i in range(x1, x2):
         for j in range(y1, y2):
-            matrix[i][j] += c
+            matrix[i][j] += 1
 
 for i in range(0, 202):
         for j in range(0, 202):
