@@ -14,10 +14,11 @@ for index, values in enumerate(positions):
         for j in range(y1, y2):
             matrix[i][j] += c
 
-for i in range(0, 2002):
-        for j in range(0, 2002):
+for i in range(0, 202):
+        for j in range(0, 202):
             
             if matrix[i][j]:
+
                 count += 1
 
 print(count)
