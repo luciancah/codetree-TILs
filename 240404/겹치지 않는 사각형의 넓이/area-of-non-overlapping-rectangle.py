@@ -1,9 +1,9 @@
 n = 3
 positions = []
-offset = 0
+offset = 1001
 count = 0
 
-matrix = [[0 for _ in range(20)] for _ in range(20)]
+matrix = [[0 for _ in range(2002)] for _ in range(2002)]
 for i in range(n):
     positions += [list(map(int, input().split()))]
 for index, values in enumerate(positions):
@@ -15,8 +15,8 @@ for index, values in enumerate(positions):
         for j in range(y1, y2):
             matrix[i][j] += c
 
-for i in range(0, 20):
-        for j in range(0, 20):
+for i in range(0, 2002):
+        for j in range(0, 2002):
             if matrix[i][j] == 1:
                 count += 1
 
