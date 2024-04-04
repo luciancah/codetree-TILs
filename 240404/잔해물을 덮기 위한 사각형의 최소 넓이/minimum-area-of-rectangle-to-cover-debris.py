@@ -19,8 +19,9 @@ for index, values in enumerate(positions):
 
 for i in range(0, 2002):
         for j in range(0, 2002):
+
             if matrix[i][j] == 1:
-                answers += [[i-offset, j-offset]]
+                answers += [[i, j]]
 
 x_length = answers[-1][0] - answers[0][0] + 1
 y_length = answers[-1][1] - answers[0][1] + 1
