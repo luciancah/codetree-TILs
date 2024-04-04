@@ -19,14 +19,21 @@ for index, values in enumerate(positions):
 
 for i in range(0, 2002):
         for j in range(0, 2002):
-
             if matrix[i][j] == 1:
                 answers += [[i, j]]
+
+answersx = []
+answersy = []
 
 if len(answers) == 0:
     print(0)
 
 else:
-    x_length = answers[-1][0] - answers[0][0] + 1
-    y_length = answers[-1][1] - answers[0][1] + 1
+    for ans in answers:
+        answersx.append(ans[0])
+        answersy.append(ans[1])
+
+
+    x_length = max(answersx) - min(answersx) + 1
+    y_length = max(answersy) - min(answersy) + 1
     print(x_length * y_length)
