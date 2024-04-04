@@ -9,16 +9,14 @@ for i in range(n):
 for index, values in enumerate(positions):
     x1, y1 = values
     x1, y1 = x1 + offset, y1 + offset
-    x2, y2 = x1 + 8, y2 + 8
+    x2, y2 = x1 + 8, y1 + 8
     for i in range(x1, x2):
         for j in range(y1, y2):
             matrix[i][j] += c
 
 for i in range(0, 202):
         for j in range(0, 202):
-            
             if matrix[i][j]:
-
                 count += 1
 
 print(count)
