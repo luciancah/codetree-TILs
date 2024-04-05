@@ -25,15 +25,21 @@ for dir, dist in b_moves:
     b_pos.append(position)
 
 a_meet = -1
+count = 0
 for i, a in enumerate(a_pos):
-    if a in set(b_pos):
-        a_meet = a
-    break
+    print('a', i, a, a_moves[i][1], b_pos)
+    count += int(a_moves[i][1])
+    if a in b_pos:
+        a_meet = count
+        break
 
 b_meet = -1
+count = 0
 for i, b in enumerate(b_pos):
-    if a in set(a_pos):
-        b_meet = b
-    break
+    print('b', i, b, b_moves[i][1], a_pos)
+    count += int(b_moves[i][1])
+    if a in a_pos:
+        b_meet = count
+        break
 
 print(max(a_meet, b_meet))
