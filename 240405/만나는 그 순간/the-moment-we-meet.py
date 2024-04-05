@@ -20,6 +20,7 @@ for move in a_moves:
             position += 1
         a_pos.append(position)
 
+position = 0
 for move in b_moves:
     dir, dist = move
     dist = int(dist)
@@ -31,7 +32,9 @@ for move in b_moves:
             position += 1
         b_pos.append(position)
 
+count = 0
 for a, b in zip(a_pos, b_pos):
+    count += 1
     if a == b:
-        print(a)
+        print(count)
         break
