@@ -33,11 +33,13 @@ for move in b_moves:
         b_pos.append(position)
 
 count = 0
+match = False
 for a, b in zip(a_pos, b_pos):
     count += 1
     if a == b:
+        match = True
         print(count)
         break
 
-if count == 0:
+if not match:
     print(-1)
