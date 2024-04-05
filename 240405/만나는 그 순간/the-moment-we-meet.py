@@ -38,3 +38,5 @@ for a, b in zip(a_pos, b_pos):
     if a == b:
         print(count)
         break
+    else:
+        print(-1)
