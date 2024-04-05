@@ -9,8 +9,6 @@ for i in range(n+m):
 a_moves = moves[0:n]
 b_moves = moves[n:]
 
-print(a_moves)
-
 for move in a_moves:
     dir, dist = move
     dist = int(dist)
@@ -33,4 +31,7 @@ for move in b_moves:
             position += 1
         b_pos.append(position)
 
-print(a_pos, b_pos)
+for a, b in zip(a_pos, b_pos):
+    if a == b:
+        print(a)
+        break
