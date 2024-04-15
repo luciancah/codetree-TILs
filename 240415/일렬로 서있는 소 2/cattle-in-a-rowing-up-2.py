@@ -8,4 +8,4 @@ for i in range(len(cows)):
             if cows[i] <= cows[j] and cows[j] <= cows[k]:
                 count += 1
 
-print(cows)
+print(count)
