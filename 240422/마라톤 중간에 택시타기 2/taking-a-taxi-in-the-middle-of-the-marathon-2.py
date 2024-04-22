@@ -19,7 +19,8 @@ min_dist = 9999999
 for i in range(len(dists)):
     dist = 0
     for j in range(1, len(dists[i])):
-        dist += abs(dists[i][j-1][0] - dists[i][j][0]) + abs(dists[i-1][j][1] - dists[i][j][1])
+        dist += abs(dists[i][j-1][0] - dists[i][j][0]) + abs(dists[i][j][1] - dists[i][j-1][1])
+
     min_dist = min(dist, min_dist)
     
 
