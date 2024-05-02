@@ -19,3 +19,4 @@ for _ in range(n):
             print(t)
             exit()
         x, y = nx, ny
+print(-1)
