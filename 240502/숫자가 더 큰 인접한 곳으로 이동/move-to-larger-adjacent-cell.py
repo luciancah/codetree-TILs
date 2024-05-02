@@ -11,7 +11,7 @@ while True:
     prev_x, prev_y = x, y
     for i in range(4):
         nx, ny = x + dxs[i], y + dys[i]
-        if nx > n - 1 or ny > n -1:
+        if nx > n - 1 or ny > n -1 or nx < 0 or ny < 0:
             continue
         # print(m[ny][nx], m[y][x])
         if m[ny][nx] > m[y][x]:
