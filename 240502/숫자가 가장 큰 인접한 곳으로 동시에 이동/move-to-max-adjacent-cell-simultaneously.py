@@ -1,5 +1,4 @@
 def print_arr(arr):
-    print('-----------------')
     for i in arr:
         print(i)
 
@@ -15,12 +14,12 @@ for _ in range(m):
 
 # print_arr(matrix)
 dxs, dys = [0, 0, -1, 1], [-1, 1, 0, 0]
-for _ in range(t):
+for s in range(t):
     for i in range(n):
         for k in range(n):
             if count[i][k]:
                 x, y = k, i
-                max_val = matrix[y][x]
+                max_val = -1
                 mx, my = x, y
                 for j in range(4):
                     nx, ny = x + dxs[j], y + dys[j]
@@ -30,16 +29,20 @@ for _ in range(t):
                         max_val = matrix[ny][nx]
                         mx = nx
                         my = ny
-                n_count[mx][my] += 1
+                n_count[my][mx] += 1
+    # print('-----------------')
+    # print(s, 'count')
     # print_arr(count)
+    # print('n_count')
     # print_arr(n_count)
+    # print('-----------------')
     for item in n_count:
         for idx in range(len(item)):
             if item[idx] >= 2:
                 item[idx] = 0
     # print_arr(n_count)
     count = n_count
-
+    n_count = [[0 for col in range(n)] for row in range(n)]
 total = 0
 for item in count:
     for idx in range(len(item)):
