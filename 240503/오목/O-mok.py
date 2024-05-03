@@ -8,8 +8,8 @@ black_pos = []
 white = False
 white_pos = []
 
-for i in range(19):
-    for j in range(19):
+for i in range(15):
+    for j in range(15):
         if arr[i][j] == 1:
             if arr[i][j+1] == arr[i][j+2] == arr[i][j+3] == arr[i][j+4] == 1:
                 win = 1
