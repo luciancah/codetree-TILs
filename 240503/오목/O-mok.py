@@ -22,7 +22,7 @@ for i in range(15):
                 black_pos = [i+2, j+2]
             if arr[i+1][j-1] == arr[i+2][j-2] == arr[i+3][j-3] == arr[i+4][j-4] == 1:
                 win = 1
-                black_pos = [i-2, j-2]
+                black_pos = [i+2, j-2]
         
         if arr[i][j] == 2:
             if arr[i][j+1] == arr[i][j+2] == arr[i][j+3] == arr[i][j+4] == 2:
@@ -35,8 +35,9 @@ for i in range(15):
                 win = 2
                 white_pos = [i+2, j+2]
             if arr[i+1][j-1] == arr[i+2][j-2] == arr[i+3][j-3] == arr[i+4][j-4] == 2:
+
                 win = 1
-                white_pos = [i-2, j-2]
+                white_pos = [i+2, j-2]
 
 print(win)
 if win == 1:
