@@ -1,5 +1,6 @@
 import sys
 
+
 arr = []
 for _ in range(19):
     arr.append(list(map(int, input().split())))
@@ -10,7 +11,7 @@ def in_range(x, y):
 dxs, dys = [1, 1, 1, -1, -1, -1, 0, 0], [-1, 0, 1, -1, 0, 1, -1, 1]
 
 for i in range(19):
-    for j in range(10):
+    for j in range(19):
         if arr[i][j] == 0:
             continue
 
