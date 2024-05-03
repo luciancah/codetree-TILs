@@ -1,77 +1,37 @@
+import sys
+
 arr = []
 for _ in range(19):
     arr.append(list(map(int, input().split())))
 
-win = 0
-black = False
-black_pos = []
-white = False
-white_pos = []
+def in_range(x, y):
+    return 0 <= x and x < 19 and 0 <= y and y < 19
 
-for i in range(15):
-    for j in range(15):
-        if arr[i][j] == 1:
-            if arr[i][j+1] == arr[i][j+2] == arr[i][j+3] == arr[i][j+4] == 1:
-                win = 1
-                black_pos = [i, j+2]
-            if arr[i+1][j] == arr[i+2][j] == arr[i+3][j] == arr[i+4][j] == 1:
-                win = 1
-                black_pos = [i+2, j]
-            if arr[i+1][j+1] == arr[i+2][j+2] == arr[i+3][j+3] == arr[i+4][j+4] == 1:
-                win = 1
-                black_pos = [i+2, j+2]
-            if arr[i+1][j-1] == arr[i+2][j-2] == arr[i+3][j-3] == arr[i+4][j-4] == 1:
-                win = 1
-                black_pos = [i+2, j-2]
-        
-        if arr[i][j] == 2:
-            if arr[i][j+1] == arr[i][j+2] == arr[i][j+3] == arr[i][j+4] == 2:
-                win = 2
-                white_pos = [i, j+2]
-            if arr[i+1][j] == arr[i+2][j] == arr[i+3][j] == arr[i+4][j] == 2:
-                win = 2
-                white_pos = [i+2, j]
-            if arr[i+1][j+1] == arr[i+2][j+2] == arr[i+3][j+3] == arr[i+4][j+4] == 2:
-                win = 2
-                white_pos = [i+2, j+2]
-            if arr[i+1][j-1] == arr[i+2][j-2] == arr[i+3][j-3] == arr[i+4][j-4] == 2:
-                win = 2
-                white_pos = [i+2, j-2]
+dxs, dys = [1, 1, 1, -1, -1, -1, 0, 0], [-1, 0, 1, -1, 0, 1, -1, 1]
 
+for i in range(19):
+    for j in range(10):
+        if arr[i][j] == 0:
+            continue
 
-for i in range(15, 19):
-    for j in range(15):
-        if arr[i][j] == 1:
-            if arr[i][j+1] == arr[i][j+2] == arr[i][j+3] == arr[i][j+4] == 1:
-                win = 1
-                black_pos = [i, j+2]
-        
-        if arr[i][j] == 2:
-            if arr[i][j+1] == arr[i][j+2] == arr[i][j+3] == arr[i][j+4] == 2:
-                win = 2
-                white_pos = [i, j+2]
+        for dx, dy in zip(dxs, dys):
+            curt = 1
+            curx = i
+            cury = j
+            while True:
+                nx = curx + dx
+                ny = cury + dy
+                if not in_range(nx, ny):
+                    break
+                if arr[nx][ny] != arr[i][j]:
+                    break
+                curt += 1
+                curx = nx
+                cury = ny
+            
+            if curt == 5:
+                print(arr[i][j])
+                print(i + 2 * dx + 1, j + 2 * dy + 1)
+                sys.exit()
 
-for i in range(15):
-    for j in range(15, 19):
-        if arr[i][j] == 1:
-            if arr[i+1][j] == arr[i+2][j] == arr[i+3][j] == arr[i+4][j] == 1:
-                win = 1
-                black_pos = [i+2, j]
-            if arr[i+1][j-1] == arr[i+2][j-2] == arr[i+3][j-3] == arr[i+4][j-4] == 1:
-                win = 1
-                black_pos = [i+2, j-2]
-        
-        if arr[i][j] == 2:
-            if arr[i+1][j] == arr[i+2][j] == arr[i+3][j] == arr[i+4][j] == 2:
-                win = 2
-                white_pos = [i+2, j]
-            if arr[i+1][j-1] == arr[i+2][j-2] == arr[i+3][j-3] == arr[i+4][j-4] == 2:
-                win = 2
-                white_pos = [i+2, j-2]
-
-
-print(win)
-if win == 1:
-    print(black_pos[0]+1, black_pos[1]+1)
-if win == 2:
-    print(white_pos[0]+1, white_pos[1]+1)
+print(0)
