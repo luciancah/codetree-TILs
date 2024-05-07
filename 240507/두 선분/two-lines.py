@@ -1,6 +1,6 @@
 a, b, c, d = list(map(int, input().split()))
 
-if (a < c):
+if (a < c and b <= d):
     if (b < c):
         print('nonintersecting')
     else:
