@@ -2,12 +2,12 @@ a, b, c, d = list(map(int, input().split()))
 
 if (a < c):
     if (b < c):
-        print('notintersecting')
+        print('nonintersecting')
     else:
         print('intersecting')
 
 if (c < a):
     if (c < b):
-        print('notintersecting')
+        print('nonintersecting')
     else:
         print('intersecting')
