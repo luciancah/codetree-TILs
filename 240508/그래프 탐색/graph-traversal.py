@@ -7,7 +7,7 @@ visited = [False for _ in range(n+1)]
 
 for _ in range(m):
     x, y = map(int, input().split())
-    graph[x-1].append(y)
+    graph[x].append(y)
 
 
 
