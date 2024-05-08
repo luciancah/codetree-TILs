@@ -19,7 +19,8 @@ while q:
         if 0 <= nx < m and 0 <= ny < n and visited[ny][nx] == 0 and snake_safe[ny][nx]:
             visited[ny][nx] = 1
             q.append((nx, ny, step + 1))
-if g_step == 0:
-    print(-1)
-else:
+
+if visited[-1][-1] == 1:
     print(g_step)
+else:
+    print(-1)
