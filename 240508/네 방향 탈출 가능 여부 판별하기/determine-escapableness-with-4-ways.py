@@ -11,8 +11,8 @@ while q:
     x, y = q.popleft()
     for dx, dy in zip(dxs, dys):
         nx, ny = x + dx, y + dy
-        if 0 <= nx < m and 0 <= ny < n and visited[nx][ny] == 0 and snake_safe[nx][ny]:
-            visited[nx][ny] = 1
+        if 0 <= nx < m and 0 <= ny < n and visited[ny][nx] == 0 and snake_safe[ny][nx]:
+            visited[ny][nx] = 1
             q.append((nx, ny))
 
 if visited[-1][-1] == 1:
