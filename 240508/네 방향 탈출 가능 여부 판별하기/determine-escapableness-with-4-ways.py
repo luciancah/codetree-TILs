@@ -17,4 +17,5 @@ while q:
 
 if visited[-1][-1] == 1:
     print(1)
-print(0)
+else:
+    print(0)
