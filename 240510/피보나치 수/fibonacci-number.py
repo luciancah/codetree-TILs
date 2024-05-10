@@ -12,7 +12,7 @@ def pick_fib(n):
         memo[n] = pick_fib(n - 1) + pick_fib(n - 2)
     return memo[n]
 
-dp = [0] * (n + 1)
+dp = [0] * (n + 2)
 dp[1] = 1
 dp[2] = 1
 
