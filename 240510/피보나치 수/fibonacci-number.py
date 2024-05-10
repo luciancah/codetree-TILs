@@ -8,6 +8,8 @@ def pick_fib(n):
         return 1
     if memo[n]:
         return memo[n]
-    return pick_fib(n - 1) + pick_fib(n - 2)
+    else:
+        memo[n] = pick_fib(n - 1) + pick_fib(n - 2)
+    return memo[n]
 
 print(pick_fib(n))
