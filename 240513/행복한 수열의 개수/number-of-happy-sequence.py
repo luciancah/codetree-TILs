@@ -18,6 +18,7 @@ else:
             if a1[i-1] == a1[i]:
                 count += 1
                 if count >= m-1:
+                    count = 0
                     fullcount += 1
                     break
             else:
@@ -29,6 +30,7 @@ else:
             if a2[i-1] == a2[i]:
                 count += 1
                 if count >= m-1:
+                    count = 0
                     fullcount += 1
                     break
             else:
