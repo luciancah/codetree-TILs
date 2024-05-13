@@ -8,7 +8,7 @@ arr2 = [list(x) for x in zip(*arr)]
 fullcount = 0
 count = 0
 
-if m == 2:
+if m == 1:
     print(2*n)
 
 else:
