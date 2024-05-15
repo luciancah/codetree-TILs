@@ -1,38 +1,40 @@
+import copy
+
 n, m = list(map(int, input().split()))
-k = 1
-arr = []
-max_price = 0
+tmp = []
+max_count = 0
 
 for _ in range(n):
-    arr.append(list(map(int, input().split())))
+    tmp.append(list(map(int, input().split())))
+
 
 for k in range(2*(n-1)):
+    arr = copy.deepcopy(tmp)
     cb = k*k+(k+1)*(k+1)
 
     for _ in range(k):
         arr.insert(0, [0] * n)
         arr.append([0] * n)
 
-    for a in arr:
+    for a in range(len(arr)):
         for _ in range(k):
-            a.insert(0, 0)
-            a.append(0)
-
-    print(arr[0])
+            arr[a].insert(0, 0)
+            arr[a].append(0)
 
     for i in range(k, n+k):
         for j in range(k, n+k):
-            price = 0
+            count = 0
             # 마름모 탐색
-            for x in range(i-k, i+k):
-                for y in range(j-k, j+k):
+            for x in range(i-k, i+k+1):
+                for y in range(j-k, j+k+1):
                     if abs(x-i) + abs(y-j) > k:
                         continue
-                    price += arr[x][y]
-            # if m * price >= cb:
-            max_price = max(price, max_price)
+                    count += arr[x][y]
+            if m * count >= cb:
+                max_count = max(count, max_count)
 
-print(max_price)
+
+print(max_count)
 
 '''
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -51,3 +53,21 @@ print(max_price)
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 '''
+
+'''
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 1 1 1 1 1 0 0
+0 0 1 1 1 1 1 0 0
+0 0 1 1 1 1 1 0 0
+0 0 1 1 1 1 1 0 0
+0 0 1 1 1 1 1 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+'''
+
+# 0 0 0 0 0
+# 0 1 0 0 0
+# 0 0 1 0 1
+# 0 0 0 0 x
+# 0 0 0 x x
