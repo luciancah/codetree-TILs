@@ -18,8 +18,13 @@ while k <= 2 * (n-1):
                 for y in range(j-k, j+k+1):
                     if abs(x-i) + abs(y-j) > k:
                         continue
-                    if 0<=x < n and 0<=y<n:
+                    try:
                         count += arr[x][y]
+                    except:
+                        continue
+                    
+                    
+                        
             if m * count >= cb:
                 max_count = max(count, max_count)
     k+=1
