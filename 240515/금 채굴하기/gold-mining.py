@@ -6,7 +6,7 @@ max_price = 0
 for _ in range(n):
     arr.append(list(map(int, input().split())))
 
-for k in range(n+2):
+for k in range(2*n):
     cb = k*k+(k+1)*(k+1)
 
     for _ in range(k):
@@ -17,6 +17,8 @@ for k in range(n+2):
         for _ in range(k):
             a.insert(0, 0)
             a.append(0)
+
+    print(arr[0])
 
     for i in range(k, n+k):
         for j in range(k, n+k):
@@ -31,3 +33,19 @@ for k in range(n+2):
                 max_price = max(price, max_price)
 
 print(max_price)
+
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 1 1 1 1 1 0 0 0 0 0
+0 0 0 0 0 1 1 1 1 1 0 0 0 0 0
+0 0 0 0 0 1 1 1 1 1 0 0 0 0 0
+0 0 0 0 0 1 1 1 1 1 0 0 0 0 0
+0 0 0 0 0 1 1 1 1 1 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
