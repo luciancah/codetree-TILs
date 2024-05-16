@@ -5,11 +5,11 @@ for _ in range(n):
     arr.append(list(map(int, input().split())))
 
 def in_range(x0, y0, x1, y1):
-    if not (0 <= x0 < x1 <= m and 0 <= y0 < y1 <= n):
+    if not (0 <= x0 <= x1 <= m and 0 <= y0 <= y1 <= n):
         return False
-    for y in range(y0, y1+1):
-        for x in range(x0, x1+1):
-            if arr[x][y] <= 0:
+    for y in range(y0, y1+1 if y1+1 < n else n):
+        for x in range(x0, x1+1 if x1+1 < m else m):
+            if arr[y][x] <= 0:
                 return False
     
     return True
