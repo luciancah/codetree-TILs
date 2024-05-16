@@ -5,7 +5,7 @@ for _ in range(n):
     arr.append(list(map(int, input().split())))
 
 def in_range(x0, y0, x1, y1):
-    if not (0 <= x0 <= x1 <= m and 0 <= y0 <= y1 <= n):
+    if not (0 <= x0 < x1 <= m and 0 <= y0 < y1 <= n):
         return False
     for y in range(y0, y1+1):
         for x in range(x0, x1+1):
