@@ -9,7 +9,7 @@ def in_range(x0, y0, x1, y1):
         return False
     for y in range(y0, y1+1):
         for x in range(x0, x1+1):
-            if arr[y][x] < 0:
+            if arr[y][x] <= 0:
                 return False
     
     return True
