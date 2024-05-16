@@ -6,5 +6,5 @@ for i in range(2):
 last = arr.pop()
 arr.insert(0, last)
 
-print(*arr[:3])
-print(*arr[3:])
+print(*arr[:len(arr)//2])
+print(*arr[len(arr)//2:])
