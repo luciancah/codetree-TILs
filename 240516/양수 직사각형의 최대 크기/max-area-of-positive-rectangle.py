@@ -20,7 +20,7 @@ for y0 in range(n):
     for x0 in range(m):
         size = 0
         for y1 in range(y0, n):
-            for x1 in range(x0, n):
+            for x1 in range(x0, m):
                 if not in_range(x0, y0, x1, y1):
                     continue
                 size = (y1 - y0 + 1) * (x1 - x0 + 1)
