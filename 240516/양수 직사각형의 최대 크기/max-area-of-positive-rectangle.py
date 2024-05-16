@@ -23,7 +23,7 @@ for y0 in range(n):
             for x1 in range(x0, n):
                 if not in_range(x0, y0, x1, y1):
                     continue
-                size = (y1 - y0 + 1) * (x1 - x0 + 1)
+                size = (y1 - y0) * (x1 - x0)
                 max_size = max(size, max_size)
 
 print(max_size if max_size != 0 else -1)
