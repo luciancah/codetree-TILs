@@ -8,7 +8,8 @@ def in_range_1(x, y,x1,y1):
     return 0 <= x <= x1 < n and 0 <= y <= y1 < m
 
 def in_range_2(basex, basey, x, y, x1, y1):
-    return ((basex <= x and basey < y) or (basex < x and basey <= y)) and 0 <= x <= x1 < n and 0 <= y <= y1 < m
+    return (not (basex >= x and basey >= y)) and 0 <= x <= x1 < n and 0 <= y <= y1 < m
+    
 
 
 def calc_sum(bx, by, x, y):
@@ -35,13 +36,12 @@ for ai in range(n):
                     for bj in range(m):
                         for bi2 in range(n):
                             for bj2 in range(m):
-                                # if not in_range_1(bi,bj,bi2,bj2):
-                                #     continue
+
                                 if not in_range_2(ai2, aj2, bi, bj, bi2, bj2):
                                     continue
                                 sum2 = calc_sum(bi, bj, bi2, bj2)
                                 # print('sum2', sum2)
-                                temp_max = max_sum
+                                # temp_max = max_sum
                                 max_sum = max(max_sum, sum1+sum2)
                                 # if temp_max != max_sum:
                                 #     print('사각형 1번', sum1, ai, aj, ai2, aj2)
