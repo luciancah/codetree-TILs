@@ -45,7 +45,8 @@ if len(grid) == 1:
         grid_dir = w[1]
         grid[grid_index] = push_array(grid[grid_index], w[1])
     for g in grid:
-        print(*g)
+        print(grid)
+
 
 else:
     for w in wind:
