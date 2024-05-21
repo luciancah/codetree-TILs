@@ -18,6 +18,7 @@ def turn_grid(grid):
     width = len(grid[0])
     arr = []
 
+
     for i in range(width):
         arr.append(grid[0][i])
 
@@ -32,23 +33,24 @@ def turn_grid(grid):
 
     arr.insert(0, arr.pop())
 
-    grid[0] = arr[:width]
-    grid[-1] = list(reversed(arr[-(width + height - 2):-(height - 2)]))
+    print(arr)
 
-    for i in range(1, height-1):
-        grid[i][-1] = arr[width:width+i][0]
+    for i in range(width):
+        grid[0][i] = arr[i]
 
-    for i in range(height-2, 0, -1):
-        new_arr = list(reversed(arr))
-        index = 0
-        grid[i][0] = new_arr[index]
-        index += 1
+    for i in range(width):
+        grid[-1][i] = arr[len(arr)-1 - i - (height-2)]
+
+    if height > 2:
+        for i in range(height-2):
+            grid[i+1][-1] = arr[width + i]
+
+        for i in range(height-2):
+            grid[i+1][0] = arr[len(arr)-1 - i]
 
     return grid
 
-    '''
-    멍청하게도 짜네 ..
-    '''
+    
 
 def get_mean(a, at, ar, ab, al):
     arr = [a, at, ar, ab, al]
@@ -88,3 +90,14 @@ for w in wind:
             
 for i in range(1, n+1):
     print(*grid[i][1:m+1])
+
+
+[[1, 6, 1, 0, 5],
+[2, 2, 1, 6, 5],
+[5, 2, 8, 8, 6]]
+
+# [2, 1, 6, 1, 0, 5, 5, 6, 8, 8, 2, 5]
+
+[[2, 1, 6, 1, 0],
+[5, 2, 1, 6, 5],
+[5, 6, 8, 8, 2]]
