@@ -39,13 +39,14 @@ def push_array(arr, dir):
 if len(grid) == 1 and len(grid[0]) == 1:
     print(grid[0][0])
 
-if len(grid) == 1:
+else if len(grid) == 1:
     for w in wind:
         grid_index = int(w[0]) - 1
         grid_dir = w[1]
         grid[grid_index] = push_array(grid[grid_index], w[1])
     for g in grid:
-        print(grid)
+        print(*g)
+
 
 
 else:
