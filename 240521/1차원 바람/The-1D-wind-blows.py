@@ -55,7 +55,7 @@ else:
         grid[grid_index] = push_array(grid[grid_index], w[1])
 
         # 위쪽 전파
-        for i in range(grid_index, 1, -1):
+        for i in range(grid_index, 0, -1):
             new_dir = 'L' if grid_dir == 'R' else 'R'
             if check_same_number(grid[i], grid[i - 1]):
                 grid[i - 1] = push_array(grid[i - 1], new_dir)
@@ -64,7 +64,7 @@ else:
             
         # 아래쪽 전파
         grid_dir = w[1]
-        for i in range(grid_index, len(grid)):
+        for i in range(grid_index, len(grid)-1):
             new_dir = 'L' if grid_dir == 'R' else 'R'
             if check_same_number(grid[i], grid[i + 1]):
                 grid[i + 1] = push_array(grid[i + 1], new_dir)
