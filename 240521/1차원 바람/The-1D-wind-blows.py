@@ -47,9 +47,6 @@ elif len(grid) == 1:
     for g in grid:
         print(*g)
 
-
-
-
 else:
     for w in wind:
         spread = True
@@ -64,10 +61,10 @@ else:
                 grid[i - 1] = push_array(grid[i - 1], new_dir)
                 grid_dir = new_dir
 
-
+            
         # 아래쪽 전파
         grid_dir = w[1]
-        for i in range(grid_index, len(grid[0])):
+        for i in range(grid_index, len(grid)):
             new_dir = 'L' if grid_dir == 'R' else 'R'
             if check_same_number(grid[i], grid[i + 1]):
                 grid[i + 1] = push_array(grid[i + 1], new_dir)
