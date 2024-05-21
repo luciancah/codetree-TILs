@@ -19,6 +19,7 @@ def turn_grid(grid):
     arr = []
 
 
+
     for i in range(width):
         arr.append(grid[0][i])
 
@@ -32,8 +33,6 @@ def turn_grid(grid):
         arr.append(grid[i][0])
 
     arr.insert(0, arr.pop())
-
-    print(arr)
 
     for i in range(width):
         grid[0][i] = arr[i]
