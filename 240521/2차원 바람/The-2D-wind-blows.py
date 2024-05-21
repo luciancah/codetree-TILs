@@ -2,37 +2,89 @@
 
 n, m, q = list(map(int, input().split()))
 grid = [[-1] * (m+2) for _ in range(n+2)]
+wind = []
 
 for i in range(n):
     arr = list(map(int, input().split()))
     for j in range(len(arr)):
         grid[i+1][j+1] = arr[j]
 
+for i in range(q):
+    wind.append(list(map(int, input().split())))
+
 # 한바퀴 돌리는 함수 (2차원 배열 받아서 2차원 배열 반환)
 def turn_grid(grid):
-    # print('old', grid)
+    height = len(grid)
+    width = len(grid[0])
     arr = []
 
-    for i in range(len(grid[0])):
+    for i in range(width):
         arr.append(grid[0][i])
 
-    for i in range(1, len(grid)-1):
+    for i in range(1, height-1):
         arr.append(grid[i][-1])
 
-    for i in range(len(grid[0])-1, -1, -1):
+    for i in range(width-1, -1, -1):
         arr.append(grid[-1][i])
 
-    for i in range(len(grid)-2, 0, -1):
+    for i in range(height-2, 0, -1):
         arr.append(grid[i][0])
 
-    arr.insert(0, arr.pop(arr[-1]))
+    arr.insert(0, arr.pop())
 
-    # grid[0] = arr[:len(grid[0])]
+    grid[0] = arr[:width]
+    grid[-1] = list(reversed(arr[-(width + height - 2):-(height - 2)]))
 
-    # print('new', grid)
-    return arr
+    for i in range(1, height-1):
+        grid[i][-1] = arr[width:width+i][0]
 
-temp = [[6, 1, 0, 5, 5], [1, 2, 1, 6, 6], [2, 5, 2, 8, 8]]
-print(turn_grid(temp))
+    for i in range(height-2, 0, -1):
+        new_arr = list(reversed(arr))
+        index = 0
+        grid[i][0] = new_arr[index]
+        index += 1
 
-# [1, 6, 0, 5, 5, 6, 8, 8, 2, 5, 2, 1]
+    return grid
+
+    '''
+    멍청하게도 짜네 ..
+    '''
+
+def get_mean(a, at, ar, ab, al):
+    arr = [a, at, ar, ab, al]
+    ans = 0
+    count = 0
+
+    for one in arr:
+        if one != -1:
+            ans += one
+            count += 1
+
+    return ans // count
+
+for w in wind:
+    new_grid = []
+    
+    for i in range(w[0], w[2]+1):
+        new_grid.append(grid[i][w[1]:w[3]+1])
+
+    new_grid = turn_grid(new_grid)
+    count_i = 0
+    for i in range(w[0], w[2]+1):
+        count_j = 0
+        for j in range(w[1], w[3]+1):
+            grid[i][j] = new_grid[count_i][count_j]
+            count_j += 1
+        count_i += 1
+
+    mean_grid = [[-1] * (m+2) for _ in range(n+2)]
+    for i in range(w[0], w[2]+1):
+        for j in range(w[1], w[3]+1):
+            mean_grid[i][j] = get_mean(grid[i][j], grid[i-1][j], grid[i][j-1], grid[i][j+1], grid[i+1][j])
+
+    for i in range(w[0], w[2]+1):
+        for j in range(w[1], w[3]+1):
+            grid[i][j] = mean_grid[i][j]
+            
+for i in range(1, n+1):
+    print(*grid[i][1:m+1])
