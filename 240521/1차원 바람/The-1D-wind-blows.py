@@ -14,14 +14,13 @@ def check_same_number(arr1, arr2):
     ans = False
     for i in range(len(arr1)):
         if arr1[i] == arr2[i]:
-            ans = True
-        
+            ans = True        
     return ans
 
 # 한바퀴 돌리는 함수
-def push_array(arr, dir):
+def push_array(arr, direc):
     new_arr = []
-    if dir == 'R':
+    if direc == 'R':
         temp = arr[0]
         for i in range(1, len(arr)):
             new_arr.append(arr[i])
@@ -60,8 +59,10 @@ else:
             if check_same_number(grid[i], grid[i - 1]):
                 grid[i - 1] = push_array(grid[i - 1], new_dir)
                 grid_dir = new_dir
+            else:
+                break
 
-            
+
         # 아래쪽 전파
         grid_dir = w[1]
         for i in range(grid_index, len(grid)-1):
@@ -69,8 +70,13 @@ else:
             if check_same_number(grid[i], grid[i + 1]):
                 grid[i + 1] = push_array(grid[i + 1], new_dir)
                 grid_dir = new_dir
+            else:
+                break
 
 
+    # for idx,data in enumerate(grid):
+    #     if idx > 20:
+    #         print(*data)
     for g in grid:
         print(*g)
 
