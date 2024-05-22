@@ -12,11 +12,11 @@ def after_bomb(grid, r, c):
     for i in range(len(grid)):
         for j in range(len(grid)):
             if i == r:
-                if abs(j - c) <= spr:
+                if abs(j - c) <= grid[r][c]-1:
                     grid[i][j] = -1
 
             if j == c:
-                if abs(i - r) <= spr:
+                if abs(i - r) <= grid[r][c]-1:
                     grid[i][j] = -1
 
 def push_grid(grid):
