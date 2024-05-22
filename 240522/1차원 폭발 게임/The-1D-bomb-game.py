@@ -30,5 +30,6 @@ while True:
 if len(new_arr) == 0:
     print(0)
 else:
+    print(len(new_arr))
     for i in range(len(new_arr)):
         print(new_arr[i])
