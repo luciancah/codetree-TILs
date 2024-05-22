@@ -27,4 +27,8 @@ while True:
         break
     arr = new_arr
 
-print(len(new_arr))
+if len(new_arr) == 0:
+    print(0)
+else:
+    for i in range(len(new_arr)):
+        print(new_arr(i))
