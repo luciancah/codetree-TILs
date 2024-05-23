@@ -56,6 +56,14 @@ def check_bomb_grid(grid, m):
 
     return rotate_ccw(new_grid)
 
+def count_bomb(grid):
+    count = 0
+    for i in range(len(grid)):
+        for j in range(len(grid)):
+            if grid[i][j] != 0:
+                count += 1
+    return count
+
 # grid2 = [[0,0,0,0,0,0],[0,0,0,0,0,0],[2,0,0,0,0,0],[3,3,0,0,0,0],[1,2,1,0,0,0],[2,4,3,0,0,0]]
 # grid2_cw = rotate_cw(grid2)
 # pushed = fall_grid(grid2_cw)
@@ -85,16 +93,32 @@ grid4 = check_bomb_grid(grid35,2)
 
 
 for i in range(k):
-    grid = check_bomb_grid(grid, m)
-    grid = check_bomb_grid(grid, m)
+    prev_count = -1
+    count = count_bomb(grid)
+
+    while prev_count != count:
+        prev_count = count
+        grid = check_bomb_grid(grid, m)
+        count = count_bomb(grid)
+
+    # for i in range(len(grid)):
+    #     print(*grid[i])
+    # print()
     grid = rotate_cw(grid)
+    # for i in range(len(grid)):
+    #     print(*grid[i])
+    # print()
     grid = fall_grid(grid)
-    grid = check_bomb_grid(grid, m)
+    # for i in range(len(grid)):
+    #     print(*grid[i])
+    # print()
+    prev_count = -1
+    while prev_count != count:
+        prev_count = count
+        grid = check_bomb_grid(grid, m)
+        count = count_bomb(grid)
+    # for i in range(len(grid)):
+    #     print(*grid[i])
+    # print()
 
-count = 0
-for i in range(len(grid)):
-    for j in range(len(grid)):
-        if grid[i][j] != 0:
-            count += 1
-
-print(count)
+print(count_bomb(grid))
