@@ -44,8 +44,8 @@ def check_bomb(arr, m):
             new_arr.extend(arr[i:j+1])
             i = j + 1
 
-    for _ in range(len(arr) - len(new_arr)):
-        new_arr.append(0)
+    new_arr.extend([0] * (len(arr) - len(new_arr)))
+
     return new_arr
 
 def check_bomb_grid(grid, m):
@@ -64,21 +64,28 @@ def count_bomb(grid):
                 count += 1
     return count
 
+c = 0
 for i in range(k):
     prev_count = -1
     count = count_bomb(grid)
 
     while prev_count != count:
+        c += 1
         prev_count = count
         grid = check_bomb_grid(grid, m)
         count = count_bomb(grid)
 
     grid = rotate_cw(grid)
     grid = fall_grid(grid)
+    
     prev_count = -1
     while prev_count != count:
+        c += 1
         prev_count = count
         grid = check_bomb_grid(grid, m)
         count = count_bomb(grid)
 
+    c += 1
+
+print(c)
 print(count_bomb(grid))
