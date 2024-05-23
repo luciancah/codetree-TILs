@@ -65,10 +65,10 @@ def check_bomb_grid(grid, m):
 
 # grid=[[3,3,2,2,3,3],[3,3,3,3,4,4],[3,2,2,2,4,1],[1,3,3,3,4,1],[3,4,3,3,4,1],[2,4,3,3,1,2]]
 
-# grid2 = check_bomb_grid(grid,2)
-# grid3 = rotate_cw(grid2)
-# grid35 = fall_grid(grid3)
-# grid4 = check_bomb_grid(grid35,2)
+grid2 = check_bomb_grid(grid,2)
+grid3 = rotate_cw(grid2)
+grid35 = fall_grid(grid3)
+grid4 = check_bomb_grid(grid35,2)
 
 # for i in range(len(grid)):
 #     print(*grid2[i])
@@ -85,6 +85,7 @@ def check_bomb_grid(grid, m):
 
 
 for i in range(k):
+    grid = check_bomb_grid(grid, m)
     grid = check_bomb_grid(grid, m)
     grid = rotate_cw(grid)
     grid = fall_grid(grid)
