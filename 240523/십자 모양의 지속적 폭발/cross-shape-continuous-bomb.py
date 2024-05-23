@@ -5,7 +5,7 @@ bomb = []
 for _ in range(n):
     grid.append(list(map(int, input().split())))
 
-for _ in range(n):
+for _ in range(m):
     bomb.append(int(input()))
 
 def after_bomb(grid, r, c):
@@ -47,6 +47,7 @@ def find_bomb_location(grid, row):
         return [-1, -1]
     else:
         return [col, row]
+
 
 for i in range(len(bomb)):
     by, bx = find_bomb_location(grid, bomb[i]-1)
