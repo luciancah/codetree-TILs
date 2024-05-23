@@ -6,7 +6,7 @@ for _ in range(n):
     grid.append(list(map(int, input().split())))
 
 for _ in range(n):
-    bomb.append(list(map(int, input().split())))
+    bomb.append(int(input()))
 
 def after_bomb(grid, r, c):
     spr = grid[r][c]-1
@@ -36,25 +36,25 @@ def push_grid(grid):
         new_grid.append(temp_arr)
     return list(map(list, zip(*new_grid)))
 
-def find_bomb_location(grid, col):
-    ans = -1
+def find_bomb_location(grid, row):
+    col = -1
     for i in range(len(grid)):
-        for j in range(len(grid)):
-            if grid[i][j] != 0:
-                ans = j
+        if grid[i][row] != 0:
+            col = i
+            break
 
-    if ans == -1:
+    if col == -1:
         return [-1, -1]
     else:
-        return [col, ans]
-
+        return [col, row]
 
 for i in range(len(bomb)):
-    by, bx = find_bomb_location(grid, bomb[i])
+    by, bx = find_bomb_location(grid, bomb[i]-1)
     if bx == -1:
         continue
     else:
         after_bomb(grid, by, bx)
         grid = push_grid(grid)
     
-print(grid)
+for i in range(len(grid)):
+    print(*grid[i])
