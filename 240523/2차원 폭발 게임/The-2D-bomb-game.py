@@ -27,8 +27,7 @@ def fall_grid(grid):
     for i in range(len(grid)):
         new_grid.append(fall_list(cw_grid[i]))
     
-    return new_grid
-
+    return rotate_ccw(new_grid)
 
 def check_bomb(arr, m):
     length = len(arr)
@@ -57,17 +56,21 @@ def check_bomb_grid(grid, m):
 
     return rotate_ccw(new_grid)
 
-# print(check_bomb_grid(grid,m))
+# grid2 = [[0,0,0,0,0,0],[0,0,0,0,0,0],[2,0,0,0,0,0],[3,3,0,0,0,0],[1,2,1,0,0,0],[2,4,3,0,0,0]]
+# grid2_cw = rotate_cw(grid2)
+# pushed = fall_grid(grid2_cw)
 
-grid2 = [[0,0,0,0,0,0],[0,0,0,0,0,0],[2,0,0,0,0,0],[3,3,0,0,0,0],[1,2,1,0,0,0],[2,4,3,0,0,0]]
-grid2_cw = rotate_cw(grid2)
-pushed = fall_grid(grid2_cw)
+# print(grid2_cw)
+# print(pushed)
 
-print(grid2_cw)
-print(pushed)
+grid=[[3,3,2,2,3,3],[3,3,3,3,4,4],[3,2,2,2,4,1],[1,3,3,3,4,1],[3,4,3,3,4,1],[2,4,3,3,1,2]]
 
-# 213200
-# 423000
-# 310000
-# 000000
-# 000000
+for i in range(k):
+    grid = check_bomb_grid(grid, m)
+    grid = rotate_cw(grid)
+    grid = check_bomb_grid(grid, m)
+
+for i in range(len(grid)):
+    print(*grid)
+
+print(grid)
