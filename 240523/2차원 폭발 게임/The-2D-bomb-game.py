@@ -64,34 +64,6 @@ def count_bomb(grid):
                 count += 1
     return count
 
-# grid2 = [[0,0,0,0,0,0],[0,0,0,0,0,0],[2,0,0,0,0,0],[3,3,0,0,0,0],[1,2,1,0,0,0],[2,4,3,0,0,0]]
-# grid2_cw = rotate_cw(grid2)
-# pushed = fall_grid(grid2_cw)
-
-# print(grid2_cw)
-# print(pushed)
-
-# grid=[[3,3,2,2,3,3],[3,3,3,3,4,4],[3,2,2,2,4,1],[1,3,3,3,4,1],[3,4,3,3,4,1],[2,4,3,3,1,2]]
-
-grid2 = check_bomb_grid(grid,2)
-grid3 = rotate_cw(grid2)
-grid35 = fall_grid(grid3)
-grid4 = check_bomb_grid(grid35,2)
-
-# for i in range(len(grid)):
-#     print(*grid2[i])
-# print()
-# for i in range(len(grid)):
-#     print(*grid3[i])
-# print()
-# for i in range(len(grid)):
-#     print(*grid35[i])
-# print()
-# for i in range(len(grid)):
-#     print(*grid4[i])
-# print()
-
-
 for i in range(k):
     prev_count = -1
     count = count_bomb(grid)
@@ -101,24 +73,12 @@ for i in range(k):
         grid = check_bomb_grid(grid, m)
         count = count_bomb(grid)
 
-    # for i in range(len(grid)):
-    #     print(*grid[i])
-    # print()
     grid = rotate_cw(grid)
-    # for i in range(len(grid)):
-    #     print(*grid[i])
-    # print()
     grid = fall_grid(grid)
-    # for i in range(len(grid)):
-    #     print(*grid[i])
-    # print()
     prev_count = -1
     while prev_count != count:
         prev_count = count
         grid = check_bomb_grid(grid, m)
         count = count_bomb(grid)
-    # for i in range(len(grid)):
-    #     print(*grid[i])
-    # print()
 
 print(count_bomb(grid))
