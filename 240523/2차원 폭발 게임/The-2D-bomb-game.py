@@ -63,14 +63,37 @@ def check_bomb_grid(grid, m):
 # print(grid2_cw)
 # print(pushed)
 
-grid=[[3,3,2,2,3,3],[3,3,3,3,4,4],[3,2,2,2,4,1],[1,3,3,3,4,1],[3,4,3,3,4,1],[2,4,3,3,1,2]]
+# grid=[[3,3,2,2,3,3],[3,3,3,3,4,4],[3,2,2,2,4,1],[1,3,3,3,4,1],[3,4,3,3,4,1],[2,4,3,3,1,2]]
+
+# grid2 = check_bomb_grid(grid,2)
+# grid3 = rotate_cw(grid2)
+# grid35 = fall_grid(grid3)
+# grid4 = check_bomb_grid(grid35,2)
+
+# for i in range(len(grid)):
+#     print(*grid2[i])
+# print()
+# for i in range(len(grid)):
+#     print(*grid3[i])
+# print()
+# for i in range(len(grid)):
+#     print(*grid35[i])
+# print()
+# for i in range(len(grid)):
+#     print(*grid4[i])
+# print()
+
 
 for i in range(k):
     grid = check_bomb_grid(grid, m)
     grid = rotate_cw(grid)
+    grid = fall_grid(grid)
     grid = check_bomb_grid(grid, m)
 
+count = 0
 for i in range(len(grid)):
-    print(*grid)
+    for j in range(len(grid)):
+        if grid[i][j] != 0:
+            count += 1
 
-print(grid)
+print(count)
