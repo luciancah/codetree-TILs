@@ -8,7 +8,7 @@ end_col = 0
 
 for i in range(n):
     flag = True
-    for j in range(k-1, k-1+m):
+    for j in range(0, k-1+m):
         if grid[i][j] == 1:
             flag = False
             break
