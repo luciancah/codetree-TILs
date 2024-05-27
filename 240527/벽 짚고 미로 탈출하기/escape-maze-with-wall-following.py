@@ -33,14 +33,14 @@ def change_direction(d, direction):
 
 f = False
 c = 0
+
 while(c < n*n):
     ny, nx = y + dirs[d][0], x + dirs[d][1]
-    # print('카운트', y, x, ny, nx)
 
     # 탈출
     if not in_range(nx, ny):
-        # print('out')
-        f = True
+        print('out')
+        f = True if flag != 0 else False
         count += 1
         break
     
@@ -48,41 +48,24 @@ while(c < n*n):
     if grid[ny][nx] == '.':
         # 바라보는 방향의 오른쪽 판독
         flag = 0
-        if d == 0 and ny != n-1:
-            ('1')
-            if grid[ny+1][nx] == '#':
+        td = change_direction(d, -1)
+        tny, tnx = ny + dirs[td][0], nx + dirs[td][1]
+        if in_range(tnx, tny):
+            if grid[tny][tnx] == '#':
                 flag = 1
             else:
                 flag = -1
-        elif d == 3 and nx != 0:
-            ('2')
-            if grid[ny][nx-1] == '#':
-                flag = 1
-            else:
-                flag = -1
-        elif d == 2 and ny != 0:
-            ('3')
-            if grid[ny-1][nx] == '#':
-                flag = 1
-            else:
-                flag = -1
-        elif d == 1 and nx != n-1:
-            ('4')
-            if grid[ny][nx+1] == '#':
-                flag = 1
-            else:
-                flag = -1
-
+        
         # 오른쪽에 벽이 있을때
         if flag == 1:
             y, x = ny, nx
-            # print('2', y, x, ny, nx)
+            print('2', y, x, ny, nx)
             count += 1
 
         # 오른쪽에 벽이 없을때
         if flag == -1:
             y, x = ny, nx
-            # print('3', y, x, ny, nx)
+            print('3', y, x, ny, nx)
             count += 1
             # print('asdf1', y, x, d)
             d = change_direction(d, -1)
@@ -96,3 +79,50 @@ while(c < n*n):
     c += 1
 
 print(count) if f == True else print(-1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# if d == 0 and ny != n-1:
+        #     ('1')
+        #     if grid[ny+1][nx] == '#':
+        #         flag = 1
+        #     else:
+        #         flag = -1
+        # elif d == 3 and nx != 0:
+        #     ('2')
+        #     if grid[ny][nx-1] == '#':
+        #         flag = 1
+        #     else:
+        #         flag = -1
+        # elif d == 2 and ny != 0:
+        #     ('3')
+        #     if grid[ny-1][nx] == '#':
+        #         flag = 1
+        #     else:
+        #         flag = -1
+        # elif d == 1 and nx != n-1:
+        #     ('4')
+        #     if grid[ny][nx+1] == '#':
+        #         flag = 1
+        #     else:
+        #         flag = -1
