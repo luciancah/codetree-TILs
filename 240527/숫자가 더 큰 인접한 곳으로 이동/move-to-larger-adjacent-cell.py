@@ -8,11 +8,14 @@ x, y = r-1, c-1
 
 visited = [grid[x][y]]
 
+def in_range(x, y):
+    return 0 <= x < n and 0 <= y < n
+
 while(True):
     count = 0
     for dx, dy in zip(dxs, dys):
-        nx, ny = x + dx, y + dy
-        if grid[y][x] < grid[ny][nx]:
+        nx, ny = x + dx, y + dy 
+        if in_range(nx, ny) and grid[y][x] < grid[ny][nx]:
             count += 1
             x = nx
             y = ny
