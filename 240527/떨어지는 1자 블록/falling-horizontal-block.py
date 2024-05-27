@@ -6,15 +6,17 @@ for _ in range(n):
 
 end_col = 0
 
-for i in range(n):
-    flag = True
+flag = True
+i = 0
+while (flag):
     for j in range(k-1, k-1+m):
         if grid[i][j] == 1:
+            end_col = i-1
             flag = False
-            break
-        end_col = i
-    if flag == False:
-        break
+    i += 1
+
+if flag:
+    end_col = n-1
 
 for j in range(k-1, k-1+m):
     grid[end_col][j] = 1
