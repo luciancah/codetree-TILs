@@ -4,9 +4,9 @@ for _ in range(n):
     grid.append(list(map(int, input().split())))
 
 dxs, dys = [0, 0, -1, 1], [-1, 1, 0, 0]
-x, y = r-1, c-1
+x, y = c-1, r-1
 
-visited = [grid[x][y]]
+visited = [grid[y][x]]
 
 def in_range(x, y):
     return 0 <= x < n and 0 <= y < n
