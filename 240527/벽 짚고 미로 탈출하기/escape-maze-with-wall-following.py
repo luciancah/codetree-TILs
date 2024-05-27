@@ -1,128 +1,71 @@
+import sys
+
+DIR_NUM = 4
+
 n = int(input())
-x, y = list(map(int, input().split()))
-grid = []
+curr_x, curr_y = tuple(map(int, input().split()))
+a = [
+    [0 for _ in range(n + 1)]
+    for _ in range(n + 1)
+]
 
-for _ in range(n):
-    grid.append(input())
+visited = [
+    [
+        [False for _ in range(DIR_NUM)]
+        for _ in range(n + 1)
+    ]
+    for _ in range(n + 1)
+]
+elapsed_time = 0
 
-dirs = [[0, 1], [-1, 0], [0, -1], [1, 0]] # 동 북 서 남
-
-x, y = x - 1, y - 1
-
-dist = 0
-d = 0
-count = 0
+curr_dir = 0
 
 def in_range(x, y):
-    return 0 <= x < n and 0 <= y < n
+    return 1 <= x and x <= n and 1 <= y and y <= n
 
-def change_direction(d, direction):
-    p1, m1 = d + 1, d - 1
-    # ccw
-    if direction == 1:
-        if p1 >= 4:
-            p1 = p1 - 4
-            return p1
-        return p1
-    # cw
-    else:
-        if m1 < 0:
-            m1 = m1 + 4
-            return m1
-        return m1
+def wall_exist(x, y):
+    return in_range(x, y) and a[x][y] == '#'
 
-f = False
-c = 0
+def simulate():
+    global curr_x, curr_y, curr_dir, elapsed_time
 
-while(c < n*n):
-    ny, nx = y + dirs[d][0], x + dirs[d][1]
-
-    # 탈출
-    if not in_range(nx, ny):
-        print('out')
-        f = True if flag != 0 else False
-        count += 1
-        break
+    if visited[curr_x][curr_y][curr_dir]:
+        print(-1)
+        sys.exit(0)
     
-    # 바라보는 방향으로 이동할 수 있을때
-    if grid[ny][nx] == '.':
-        # 바라보는 방향의 오른쪽 판독
-        flag = 0
-        td = change_direction(d, -1)
-        tny, tnx = ny + dirs[td][0], nx + dirs[td][1]
-        if in_range(tnx, tny):
-            if grid[tny][tnx] == '#':
-                flag = 1
-            else:
-                flag = -1
-        
-        # 오른쪽에 벽이 있을때
-        if flag == 1:
-            y, x = ny, nx
-            print('2', y, x, ny, nx)
-            count += 1
+    visited[curr_x][curr_y][curr_dir] = True
+    
+    dxs, dys = [0, 1, 0, -1], [1, 0, -1, 0]
+    
+    next_x, next_y = curr_x + dxs[curr_dir], curr_y + dys[curr_dir]
+    
+    if wall_exist(next_x, next_y):
+        curr_dir = (curr_dir - 1 + 4) % 4
+    
+    elif not in_range(next_x, next_y):
+        curr_x, curr_y = next_x, next_y
+        elapsed_time += 1
 
-        # 오른쪽에 벽이 없을때
-        if flag == -1:
-            y, x = ny, nx
-            print('3', y, x, ny, nx)
-            count += 1
-            # print('asdf1', y, x, d)
-            d = change_direction(d, -1)
-            y, x = y + dirs[d][0], x + dirs[d][1]
-            # print('asdf2', y, x, d)
-            count += 1
-
-    # 바라보는 방향으로 이동할 수 없을때
     else:
-        d = change_direction(d, 1)
-    c += 1
-
-print(count) if f == True else print(-1)
-
-
-
-
-
-
-
-
-
+        rx = next_x + dxs[(curr_dir + 1) % 4]
+        ry = next_y + dys[(curr_dir + 1) % 4]
+    
+        if wall_exist(rx, ry):
+            curr_x, curr_y = next_x, next_y
+            elapsed_time += 1
+        
+        else:
+            curr_x, curr_y = rx, ry
+            curr_dir = (curr_dir + 1) % 4
+            elapsed_time += 2
 
 
+for i in range(1, n + 1):
+    given_row = input()
+    for j, elem in enumerate(given_row, start = 1):
+        a[i][j] = elem
 
+while in_range(curr_x, curr_y):
+    simulate()
 
-
-
-
-
-
-
-
-
-
-
-# if d == 0 and ny != n-1:
-        #     ('1')
-        #     if grid[ny+1][nx] == '#':
-        #         flag = 1
-        #     else:
-        #         flag = -1
-        # elif d == 3 and nx != 0:
-        #     ('2')
-        #     if grid[ny][nx-1] == '#':
-        #         flag = 1
-        #     else:
-        #         flag = -1
-        # elif d == 2 and ny != 0:
-        #     ('3')
-        #     if grid[ny-1][nx] == '#':
-        #         flag = 1
-        #     else:
-        #         flag = -1
-        # elif d == 1 and nx != n-1:
-        #     ('4')
-        #     if grid[ny][nx+1] == '#':
-        #         flag = 1
-        #     else:
-        #         flag = -1
+print(elapsed_time)
