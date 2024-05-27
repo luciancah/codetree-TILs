@@ -18,5 +18,5 @@ for i in range(n):
 for j in range(k-1, k-1+m):
     grid[end_col][j] = 1
 
-for i in range(4):
+for i in range(n):
     print(*grid[i])
