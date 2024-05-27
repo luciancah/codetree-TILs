@@ -13,7 +13,8 @@ for i in range(n):
             flag = False
             break
         end_col = i
-    break
+    if flag == False:
+        break
 
 for j in range(k-1, k-1+m):
     grid[end_col][j] = 1
