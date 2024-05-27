@@ -8,7 +8,7 @@ end_col = 0
 
 flag = True
 i = 0
-while (flag):
+while (flag and i < n):
     for j in range(k-1, k-1+m):
         if grid[i][j] == 1:
             end_col = i-1
