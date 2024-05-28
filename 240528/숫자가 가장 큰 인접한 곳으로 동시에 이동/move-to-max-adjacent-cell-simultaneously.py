@@ -1,5 +1,3 @@
-from copy import deepcopy
-
 n, m, t = list(map(int, input().split()))
 grid = []
 balls_grid = [[0] * n for _ in range(n)]
@@ -39,14 +37,13 @@ def check_near(y, x):
 def find_duplicate(arr):
     duplicates = []
     for i in range(len(arr)):
-        for j in range(len(arr)):
+        for j in range(i+1, len(arr)):
             if arr[i] == arr[j]:
-                duplicates.append([i, j])
+                duplicates.append(arr[i])
 
     return duplicates
 
 for _ in range(t):
-    # new_grid = deepcopy(balls_grid)
     new_grid = [[0] * n for _ in range(n)]
     new_balls = []
     for i in range(n):
@@ -55,11 +52,16 @@ for _ in range(t):
                 ny, nx = check_near(i, j)
                 new_balls.append([ny, nx])
                 new_grid[ny][nx] = 1
+
     dups = find_duplicate(new_balls)
+
     for d in dups:
+        # print(d)
         new_grid[d[0]][d[1]] = 0
-    # print(new_balls)
     balls_grid = new_grid
+    # for i in range(n):
+    #     print(*balls_grid[i])
+    # print()
 
 # for i in range(n):
 #     print(*balls_grid[i])
