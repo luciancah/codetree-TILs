@@ -21,20 +21,26 @@ def change_dir(curr_dir, pin):
     return direction_map[curr_dir][pin]
 
 def simulate_ball(y, x, curr_dir):
+    # print('start', y, x, curr_dir)
     count = 1
+    if grid[y][x] == 1:
+        curr_dir = change_dir(curr_dir, 1)
+    if grid[y][x] == 2:
+        curr_dir = change_dir(curr_dir, 2)
     while (count <= n*n*n):
         # print(curr_dir, y, x)
         ny, nx = y + dys[move_dirs[curr_dir]], x + dxs[move_dirs[curr_dir]]
         count += 1
         if not in_range(ny, nx):
+            # print('out', count)
             return count
-        
         # 1일때
         if grid[ny][nx] == 1:
             curr_dir = change_dir(curr_dir, 1)
         
         if grid[ny][nx] == 2:
             curr_dir = change_dir(curr_dir, 2)
+        
 
         y, x = ny, nx
 
@@ -65,3 +71,13 @@ for i in range(n):
     max_count = max(max_count, count)
 
 print(max_count)
+
+# 2 1 0 2 
+# 2 0 2 2 
+# 1 2 1 2 
+# 2 0 2 1
+
+# \ / 0 \
+# \ 0 \ \
+# / \ / \
+# \ 0 \ /
