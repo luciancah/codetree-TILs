@@ -22,13 +22,12 @@ def change_dir(curr_dir, pin):
 
 def simulate_ball(y, x, curr_dir):
     count = 1
-    while True:
+    while (count <= n*n):
         # print(curr_dir, y, x)
         ny, nx = y + dys[move_dirs[curr_dir]], x + dxs[move_dirs[curr_dir]]
         count += 1
         if not in_range(ny, nx):
-            # print('break', count)
-            break
+            return count
         
         # 1일때
         if grid[ny][nx] == 1:
@@ -39,7 +38,7 @@ def simulate_ball(y, x, curr_dir):
 
         y, x = ny, nx
 
-    return count
+    return -1
 
 max_count = 0
 
