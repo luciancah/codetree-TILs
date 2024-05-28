@@ -40,7 +40,10 @@ def move_snake(flag, grid, count, m, y, x):
             return (y, x, count, flag, grid)
 
         # 가는거
-        snakesq.popleft() if not(grid[ny][nx] == 1) else grid[ny][nx] = 0
+        if not(grid[ny][nx] == 1):
+            snakesq.popleft() 
+        else:
+            grid[ny][nx] = 0
 
         if in_snake(ny, nx):
             flag = False
