@@ -15,7 +15,7 @@ def change_dir(curr_dir, pin):
     direction_map = {
         'R': {1: 'U', 2: 'D'},
         'L': {1: 'D', 2: 'U'},
-        'U': {1: 'R', 2: 'D'},
+        'U': {1: 'R', 2: 'L'},
         'D': {1: 'L', 2: 'R'}
     }
     return direction_map[curr_dir][pin]
@@ -81,3 +81,9 @@ print(max_count)
 # \ 0 \ \
 # / \ / \
 # \ 0 \ /
+
+# 0 2 
+# 0 1
+
+# 0 \
+# 0 /
