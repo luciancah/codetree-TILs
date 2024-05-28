@@ -29,31 +29,24 @@ def in_snake(y, x):
         return False
 
 def move_snake(flag, grid, count, m, y, x):
-    # print('m', m)
     dirr = move_dirs[m[0]] # R : 2
 
     for i in range(m[1]):
         ny, nx = y + dys[dirr], x + dxs[dirr]
-        # print('i', i, ny, nx)
+        
         if not in_range(ny, nx):
-            # print('1')
             flag = False
             count += 1
             return (y, x, count, flag, grid)
 
         # 가는거
-        if not(grid[ny][nx] == 1):
-            # print('3')
-            snakesq.popleft()
-        else:
-            # print('4')
-            grid[ny][nx] = 0
+        snakesq.popleft() if not(grid[ny][nx] == 1) else grid[ny][nx] = 0
+
         if in_snake(ny, nx):
-            # print('2')
             flag = False
             count += 1
             return (y, x, count, flag, grid)
-        # print('5')
+
         snakesq.append([ny, nx])
         count += 1
         y, x = ny, nx
@@ -68,20 +61,10 @@ flag = True
 for a in apples:
     grid[a[0]-1][a[1]-1] = 1
 
-# for i in range(n):
-#     print(*grid[i])
-# print()
-
 
 for m in moves:
     if flag == False:
-        # print(count)
         break
     y, x, count, flag, grid = move_snake(flag, grid, count, m, y, x)
-    # print(snakesq, count, flag)
-    # for i in range(n):
-    #     print(*grid[i])
-    # print()
-
 
 print(count)
