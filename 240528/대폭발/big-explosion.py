@@ -1,4 +1,5 @@
-from copy import deepcopy 
+from copy import deepcopy
+from math import pow
 
 n, m, r, c = list(map(int, input().split()))
 grid = [[0] * n for _ in range(n)]
@@ -15,9 +16,9 @@ def update_grid(grid, t):
         for j in range(n):
             if grid[i][j] == 1:
                 for k in range(4):
-                    ny, nx = i + dys[k]*t, j + dxs[k]*t
-                    # print(ny, nx, t, k)
+                    ny, nx = i + dys[k]*int(pow(2, t-1)), j + dxs[k]*int(pow(2, t-1))
                     if in_range(ny, nx):
+                        # print(i, j, ny, nx, t, k)
                         new_grid[ny][nx] = 1
 
     # for i in range(n):
