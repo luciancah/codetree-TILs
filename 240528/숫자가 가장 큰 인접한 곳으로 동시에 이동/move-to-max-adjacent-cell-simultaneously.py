@@ -55,9 +55,10 @@ for _ in range(t):
                 new_grid[ny][nx] = 1
 
     dups = find_duplicate(new_balls)
-    print('new balls', new_balls)
+    # print('new balls', new_balls)
     for d in dups:
         # print(d)
+        
         new_grid[d[0]][d[1]] = 0
     balls_grid = new_grid
     # for i in range(n):
