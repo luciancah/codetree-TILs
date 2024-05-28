@@ -17,7 +17,7 @@ def in_range(y, x):
 dys, dxs = [-1, 1, 0, 0], [0, 0, -1, 1]
 
 def check_near(y, x):
-    max_near = [grid[y][x], y, x]
+    max_near = [0, y, x]
     for i in range(4):
         ny, nx = y + dys[i], x + dxs[i]
         if not in_range(ny, nx):
@@ -26,6 +26,7 @@ def check_near(y, x):
         max_near[0] = max(grid[ny][nx], max_near[0])
 
         if max_near[0] != temp:
+            # print(i, max_near[0], temp, ny, nx)
             max_near[1], max_near[2] = ny, nx
 
     return max_near[1], max_near[2]
@@ -54,7 +55,7 @@ for _ in range(t):
                 new_grid[ny][nx] = 1
 
     dups = find_duplicate(new_balls)
-
+    print('new balls', new_balls)
     for d in dups:
         # print(d)
         new_grid[d[0]][d[1]] = 0
