@@ -26,14 +26,9 @@ def check_near(y, x):
         max_near[0] = max(grid[ny][nx], max_near[0])
 
         if max_near[0] != temp:
-            # print(i, max_near[0], temp, ny, nx)
             max_near[1], max_near[2] = ny, nx
 
     return max_near[1], max_near[2]
-
-# for i in range(n):
-#     print(*balls_grid[i])
-# print()
 
 def find_duplicate(arr):
     duplicates = []
@@ -55,19 +50,9 @@ for _ in range(t):
                 new_grid[ny][nx] = 1
 
     dups = find_duplicate(new_balls)
-    # print('new balls', new_balls)
     for d in dups:
-        # print(d)
-        
         new_grid[d[0]][d[1]] = 0
     balls_grid = new_grid
-    # for i in range(n):
-    #     print(*balls_grid[i])
-    # print()
-
-# for i in range(n):
-#     print(*balls_grid[i])
-# print()
 
 count = 0
 for i in range(n):
