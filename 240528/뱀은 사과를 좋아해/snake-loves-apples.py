@@ -41,12 +41,6 @@ def move_snake(flag, grid, count, m, y, x):
             count += 1
             return (y, x, count, flag, grid)
 
-        if in_snake(ny, nx):
-            # print('2')
-            flag = False
-            count += 1
-            return (y, x, count, flag, grid)
-
         # 가는거
         if not(grid[ny][nx] == 1):
             # print('3')
@@ -54,6 +48,11 @@ def move_snake(flag, grid, count, m, y, x):
         else:
             # print('4')
             grid[ny][nx] = 0
+        if in_snake(ny, nx):
+            # print('2')
+            flag = False
+            count += 1
+            return (y, x, count, flag, grid)
         # print('5')
         snakesq.append([ny, nx])
         count += 1
