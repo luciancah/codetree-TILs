@@ -22,7 +22,7 @@ def change_dir(curr_dir, pin):
 
 def simulate_ball(y, x, curr_dir):
     count = 1
-    while (count <= n*n):
+    while (count <= n*n*n):
         # print(curr_dir, y, x)
         ny, nx = y + dys[move_dirs[curr_dir]], x + dxs[move_dirs[curr_dir]]
         count += 1
