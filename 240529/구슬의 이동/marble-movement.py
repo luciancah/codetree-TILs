@@ -110,7 +110,7 @@ for _ in range(t+1):
                 # print('이거', new_grid[i][j])
                 new_grid[i][j].sort(key=lambda x: (-balls[x-1][4], -balls[x-1][0]))
                 # print('이거', new_grid[i][j])
-                new_grid[i][j] = new_grid[i][j][0:z]
+                new_grid[i][j] = new_grid[i][j][0:z+1]
 
 
     grid = new_grid
