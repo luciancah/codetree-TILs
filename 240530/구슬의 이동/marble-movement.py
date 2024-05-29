@@ -16,12 +16,10 @@ def change_dir(curr_dir):
 def in_range(y, x):
     return 0 <= y < n and 0 <= x < n
 
-grid = [[[] for _ in range(n)] for _ in range(n)]
+grid = [[[]] * n for _ in range(n)]
 balls = []
 
 for i in range(m):
-    # i, r, c, d, v
-    # 번호 y x 방향 속력
     r, c, d, v = list(map(str, input().split()))
     balls.append([i+1, int(r)-1, int(c)-1, d, int(v)])
 
@@ -35,51 +33,40 @@ def move_ball(curr_ball, r, c):
         share = (c + v) // (n - 1)
         remainder = (c + v) % (n - 1)
         if share % 2 == 0:
-            d = 'R'
             c = remainder
         else:
             d = 'L'
-            balls[grid[r][c][0]-1][3] = 'L'
-            c = n-1-remainder
-    
+            c = n - 1 - remainder
     elif d == 'L':
-        share = (n-1-c + v) // (n - 1) # 4 // 3 = 1
-        remainder = (n-1-c + v) % (n - 1) # 4 % 3 = 1
+        share = (n - 1 - c + v) // (n - 1)
+        remainder = (n - 1 - c + v) % (n - 1)
         if share % 2 == 0:
-            d = 'L'
-            c = n-1-remainder
+            c = n - 1 - remainder
         else:
             d = 'R'
-            balls[grid[r][c][0]-1][3] = 'R'
             c = remainder
-
     elif d == 'U':
-        share = ((n-1-r) + v) // (n - 1)
-        remainder = ((n-1-r) + v) % (n - 1)
-
+        share = (n - 1 - r + v) // (n - 1)
+        remainder = (n - 1 - r + v) % (n - 1)
         if share % 2 == 0:
-            d = 'U'
-            r = n-1-remainder
+            r = n - 1 - remainder
         else:
             d = 'D'
-            balls[grid[r][c][0]-1][3] = 'D'
             r = remainder
-
     elif d == 'D':
         share = (r + v) // (n - 1)
         remainder = (r + v) % (n - 1)
-
         if share % 2 == 0:
-            d = 'D'
             r = remainder
         else:
             d = 'U'
-            balls[grid[r][c][0]-1][3] = 'U'
-            r = n-1-remainder
+            r = n - 1 - remainder
+
+    curr_ball[3] = d
     return (r, c)
 
 for _ in range(t):
-    new_grid = [[[] for _ in range(n)] for _ in range(n)]
+    new_grid = [[[]] * n for _ in range(n)]
     for i in range(n):
         for j in range(n):
             if len(grid[i][j]) != 0:
