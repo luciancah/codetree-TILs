@@ -1,4 +1,4 @@
-n, m, t, k = list(map(int, input().split()))
+n, m, t, z = list(map(int, input().split()))
 
 # 상하좌우
 dys, dxs = [-1, 1, 0, 0], [0, 0, -1, 1]
@@ -105,11 +105,11 @@ for _ in range(t):
 
     for i in range(n):
         for j in range(n):
-            if len(new_grid[i][j]) > k:
+            if len(new_grid[i][j]) > z:
                 # print('이거', new_grid[i][j])
                 new_grid[i][j].sort()
                 # print('이거', new_grid[i][j])
-                new_grid[i][j] = new_grid[i][j][0:k+2]
+                new_grid[i][j] = new_grid[i][j][0:z+1]
 
 
     grid = new_grid
