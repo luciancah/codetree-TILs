@@ -101,15 +101,16 @@ for _ in range(t):
                 for k in range(len(grid[i][j])):
                     # 여기
                     ny, nx = move_ball(balls[grid[i][j][k]-1], i, j)
+                    # print('볼번호', balls[grid[i][j][k]-1], i, j, ny, nx)
                     new_grid[ny][nx] = new_grid[ny][nx] + [grid[i][j][k]]
 
     for i in range(n):
         for j in range(n):
             if len(new_grid[i][j]) > z:
                 # print('이거', new_grid[i][j])
-                new_grid[i][j].sort()
+                new_grid[i][j].sort(reverse=True)
                 # print('이거', new_grid[i][j])
-                new_grid[i][j] = new_grid[i][j][0:z+1]
+                new_grid[i][j] = new_grid[i][j][0:z]
 
 
     grid = new_grid
@@ -126,3 +127,8 @@ for i in range(n):
             count += len(grid[i][j])
 
 print(count)
+
+# 1 1 L 1
+# 1 3 R 2
+# 2 2 U 1
+# 3 2 D 3
