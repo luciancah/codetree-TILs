@@ -30,16 +30,11 @@ for i in range(t):
 
     for _ in range(n*2):
         new_grid = [['0'] * n for _ in range(n)]
-        # print('------')
-        # for i in range(len(grid)):
-        #     print(*grid[i])
-        # print('------')
 
         for i in range(n):
             for j in range(n):
                 if len(grid[i][j]) == 1 and grid[i][j] != '0':
                     ny, nx = i + dys[move_dirs[grid[i][j]]], j + dxs[move_dirs[grid[i][j]]]
-                    # print(i, j, ny, nx)
 
                     if in_range(ny, nx):
                         if new_grid[ny][nx] == '0':
@@ -50,7 +45,6 @@ for i in range(t):
                         if new_grid[i][j] == '0':
                             new_grid[i][j] = change_dir(grid[i][j])
                         else:
-                            # print('asdf', ny, nx)
                             new_grid[i][j] += change_dir(grid[i][j])
 
         for i in range(n):
