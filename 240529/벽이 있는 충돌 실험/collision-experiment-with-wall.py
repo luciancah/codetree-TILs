@@ -29,8 +29,8 @@ for i in range(t):
         grid[y][x] = dirr
 
     for _ in range(n*2):
-        # print('------')
         new_grid = [['0'] * n for _ in range(n)]
+        # print('------')
         # for i in range(len(grid)):
         #     print(*grid[i])
         # print('------')
@@ -47,16 +47,16 @@ for i in range(t):
                         else:
                             new_grid[ny][nx] += grid[i][j]
                     else:
-                        if new_grid[i][j] != '0':
-                            new_grid[i][j] = '0'
+                        if new_grid[i][j] == '0':
+                            new_grid[i][j] = change_dir(grid[i][j])
                         else:
                             # print('asdf', ny, nx)
-                            new_grid[i][j] = change_dir(grid[i][j])
+                            new_grid[i][j] += change_dir(grid[i][j])
 
-        # for i in range(n):
-        #     for j in range(n):
-        #         if len(grid[i][j]) > 1:
-        #             grid[i][j] = '0'
+        for i in range(n):
+            for j in range(n):
+                if len(grid[i][j]) > 1:
+                    grid[i][j] = '0'
 
         grid = new_grid
 
