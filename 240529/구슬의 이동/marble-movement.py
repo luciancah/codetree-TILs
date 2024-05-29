@@ -108,7 +108,7 @@ for _ in range(t):
         for j in range(n):
             if len(new_grid[i][j]) > z:
                 # print('이거', new_grid[i][j])
-                new_grid[i][j].sort(key=lambda x: (-balls[x-1][0], -balls[x-1][4]))
+                new_grid[i][j].sort(key=lambda x: (-balls[x-1][4], -balls[x-1][0]))
                 # print('이거', new_grid[i][j])
                 new_grid[i][j] = new_grid[i][j][0:z]
 
