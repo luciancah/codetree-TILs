@@ -21,40 +21,42 @@ def in_range(y, x):
 for i in range(t):
     n, m = list(map(int, input().split()))
     balls = []
-    grid = [[0] * n for _ in range(n)]
+    grid = [[''] * n for _ in range(n)]
 
     for i in range(m):
-        balls.append(list(map(str, input().split())))
-        balls[i][0] = int(balls[i][0]) - 1
-        balls[i][1] = int(balls[i][1]) - 1
+        y, x, dirr = list(map(str, input().split()))
+        y, x = int(y) - 1, int(x) - 1
+        grid[y][x] = dirr
 
-    for _ in range(n*n):
-        # grid = [[0] * n for _ in range(n)]
-        # for b in balls:
-        #     grid[b[0]][b[1]] = b[2]
+    for _ in range(n*2):
+        new_grid = [[''] * n for _ in range(n)]
         # for i in range(len(grid)):
         #     print(*grid[i])
         # print()
-        for b in balls:
-            y, x, curr_dir = b[0], b[1], move_dirs[b[2]]
-            ny, nx = b[0] + dys[curr_dir], b[1] + dxs[curr_dir]
 
-            if in_range(ny, nx):
-                # print('1', y, x, ny, nx)
-                b[0], b[1] = ny, nx
-            else:
-                # print('2', y, x, ny, nx)
-                b[2] = change_dir(b[2])
-        
-        dups = []
-        for i in range(len(balls)):
-            for j in range(i+1, len(balls)):
-                if balls[i][0:2] == balls[j][0:2]:
-                    dups.append(balls[i])
-                    dups.append(balls[j])
-        # print(balls)
-        # print(dups)
-        for d in dups:
-            balls.remove(d)
+        for i in range(n):
+            for j in range(n):
+                if len(grid[i][j]) == 1:
+                    ny, nx = i + dys[move_dirs[grid[i][j]]], j + dxs[move_dirs[grid[i][j]]]
 
-    print(len(balls))
+                    if in_range(ny, nx):
+                        new_grid[ny][nx] += grid[i][j]
+                    else:
+                        if new_grid[y][x] != '':
+                            new_grid[y][x] = ''
+                        new_grid[y][x] += change_dir(grid[i][j])
+
+        for i in range(n):
+            for j in range(n):
+                if len(grid[i][j]) > 1:
+                    grid[i][j] = ''
+
+        grid = new_grid
+
+    count = 0
+    for i in range(n):
+        for j in range(n):
+            if len(grid[i][j]) != 0:
+                count += 1
+
+    print(count)
