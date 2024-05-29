@@ -18,8 +18,6 @@ def change_dir(curr_dir):
 def in_range(y, x):
     return 0 <= y < n and 0 <= x < n
 
-
-
 for i in range(t):
     n, m = list(map(int, input().split()))
     balls = []
@@ -30,7 +28,7 @@ for i in range(t):
         balls[i][0] = int(balls[i][0]) - 1
         balls[i][1] = int(balls[i][1]) - 1
 
-    for _ in range(150):
+    for _ in range(n*n):
         # grid = [[0] * n for _ in range(n)]
         # for b in balls:
         #     grid[b[0]][b[1]] = b[2]
