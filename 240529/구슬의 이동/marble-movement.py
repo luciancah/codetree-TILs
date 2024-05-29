@@ -89,7 +89,8 @@ def move_ball(curr_ball, r, c):
 #     print(*grid[i])
 # print('-----')
 
-for _ in range(t+1):
+for _ in range(t+2):
+
     # print('-----')
     # for i in range(n):
     #     print(*grid[i])
