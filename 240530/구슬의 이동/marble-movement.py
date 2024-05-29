@@ -38,6 +38,7 @@ def move_ball(curr_ball, r, c):
         else:
             d = 'L'
             # balls[grid[r][c][0]-1][3] = 'L'
+            curr_ball[3] = 'L'
             c = n-1-remainder
     
     elif d == 'L':
@@ -49,6 +50,7 @@ def move_ball(curr_ball, r, c):
         else:
             d = 'R'
             # balls[grid[r][c][0]-1][3] = 'R'
+            curr_ball[3] = 'R'
             c = remainder
 
     elif d == 'U':
@@ -60,6 +62,7 @@ def move_ball(curr_ball, r, c):
         else:
             d = 'D'
             # balls[grid[r][c][0]-1][3] = 'D'
+            curr_ball[3] = 'D'
             r = remainder
 
     elif d == 'D':
@@ -72,6 +75,7 @@ def move_ball(curr_ball, r, c):
         else:
             d = 'U'
             # balls[grid[r][c][0]-1][3] = 'U'
+            curr_ball[3] = 'U'
             r = n - 1 - remainder
     return (r, c)
 
