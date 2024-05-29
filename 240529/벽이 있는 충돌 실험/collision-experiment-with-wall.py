@@ -21,7 +21,7 @@ def in_range(y, x):
 for i in range(t):
     n, m = list(map(int, input().split()))
     balls = []
-    grid = [[''] * n for _ in range(n)]
+    grid = [['0'] * n for _ in range(n)]
 
     for i in range(m):
         y, x, dirr = list(map(str, input().split()))
@@ -29,34 +29,41 @@ for i in range(t):
         grid[y][x] = dirr
 
     for _ in range(n*2):
-        new_grid = [[''] * n for _ in range(n)]
+        # print('------')
+        new_grid = [['0'] * n for _ in range(n)]
         # for i in range(len(grid)):
         #     print(*grid[i])
-        # print()
+        # print('------')
 
         for i in range(n):
             for j in range(n):
-                if len(grid[i][j]) == 1:
+                if len(grid[i][j]) == 1 and grid[i][j] != '0':
                     ny, nx = i + dys[move_dirs[grid[i][j]]], j + dxs[move_dirs[grid[i][j]]]
+                    # print(i, j, ny, nx)
 
                     if in_range(ny, nx):
-                        new_grid[ny][nx] += grid[i][j]
+                        if new_grid[ny][nx] == '0':
+                            new_grid[ny][nx] = grid[i][j]
+                        else:
+                            new_grid[ny][nx] += grid[i][j]
                     else:
-                        if new_grid[y][x] != '':
-                            new_grid[y][x] = ''
-                        new_grid[y][x] += change_dir(grid[i][j])
+                        if new_grid[i][j] != '0':
+                            new_grid[i][j] = '0'
+                        else:
+                            # print('asdf', ny, nx)
+                            new_grid[i][j] = change_dir(grid[i][j])
 
-        for i in range(n):
-            for j in range(n):
-                if len(grid[i][j]) > 1:
-                    grid[i][j] = ''
+        # for i in range(n):
+        #     for j in range(n):
+        #         if len(grid[i][j]) > 1:
+        #             grid[i][j] = '0'
 
         grid = new_grid
 
     count = 0
     for i in range(n):
         for j in range(n):
-            if len(grid[i][j]) != 0:
+            if len(grid[i][j]) == 1 and grid[i][j] != '0':
                 count += 1
 
     print(count)
