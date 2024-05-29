@@ -33,36 +33,46 @@ def move_ball(curr_ball, r, c):
         share = (c + v) // (n - 1)
         remainder = (c + v) % (n - 1)
         if share % 2 == 0:
+            d = 'R'
             c = remainder
         else:
             d = 'L'
-            c = n - 1 - remainder
+            # balls[grid[r][c][0]-1][3] = 'L'
+            c = n-1-remainder
+    
     elif d == 'L':
         share = (n - 1 - c + v) // (n - 1)
         remainder = (n - 1 - c + v) % (n - 1)
         if share % 2 == 0:
+            d = 'L'
             c = n - 1 - remainder
         else:
             d = 'R'
+            # balls[grid[r][c][0]-1][3] = 'R'
             c = remainder
+
     elif d == 'U':
         share = (n - 1 - r + v) // (n - 1)
         remainder = (n - 1 - r + v) % (n - 1)
         if share % 2 == 0:
-            r = n - 1 - remainder
+            d = 'U'
+            r = n-1-remainder
         else:
             d = 'D'
+            # balls[grid[r][c][0]-1][3] = 'D'
             r = remainder
+
     elif d == 'D':
         share = (r + v) // (n - 1)
         remainder = (r + v) % (n - 1)
+
         if share % 2 == 0:
+            d = 'D'
             r = remainder
         else:
             d = 'U'
+            # balls[grid[r][c][0]-1][3] = 'U'
             r = n - 1 - remainder
-
-    curr_ball[3] = d
     return (r, c)
 
 for _ in range(t):
