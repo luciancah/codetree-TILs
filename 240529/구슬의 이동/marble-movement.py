@@ -89,7 +89,7 @@ def move_ball(curr_ball, r, c):
 #     print(*grid[i])
 # print('-----')
 
-for _ in range(t+1):
+for _ in range(t):
     # print('-----')
     # for i in range(n):
     #     print(*grid[i])
@@ -108,9 +108,9 @@ for _ in range(t+1):
         for j in range(n):
             if len(new_grid[i][j]) > z:
                 # print('이거', new_grid[i][j])
-                new_grid[i][j].sort(key=lambda x: (-balls[x-1][4], -balls[x-1][0]))
+                new_grid[i][j].sort(key=lambda x: (-balls[x-1][0], -balls[x-1][4]))
                 # print('이거', new_grid[i][j])
-                new_grid[i][j] = new_grid[i][j][0:z+1]
+                new_grid[i][j] = new_grid[i][j][0:z]
 
 
     grid = new_grid
