@@ -34,7 +34,7 @@ def combinations(n,k):
         combinations(n, k)
         answer.pop()
 
-for k in range(3, 0, -1):
+for k in range(n, 0, -1):
     combinations(n, k)
     if ans != 0:
         print(ans)
