@@ -14,13 +14,10 @@ def is_beautiful(num_arr):
                 break
             if num_arr[j] == temp:
                 count += 1
-        # print(i, j, flag)
         if count != temp:
             flag = False
         i += temp
     return flag
-
-# print(is_beautiful([2, 2, 3]))
 
 
 def choose(curr_num):
@@ -30,7 +27,7 @@ def choose(curr_num):
                 a2.append(answer[:])
         return
 
-    for i in range(1, n+1):
+    for i in range(1, 5):
         answer.append(i)
         choose(curr_num + 1)
         answer.pop()
@@ -38,4 +35,5 @@ def choose(curr_num):
     return
 
 choose(1)
+
 print(len(a2))
