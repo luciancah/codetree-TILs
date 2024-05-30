@@ -2,22 +2,18 @@ n = int(input())
 answer = []
 a2 = []
 
-def is_beautiful(num_arr):
-    flag = True
+def is_beautiful():
     i = 0
-    while i < len(num_arr):
-        temp = num_arr[i]
-        count = 0
-        for j in range(i, i + temp):
-            if j >= len(num_arr):
-                flag = False
-                break
-            if num_arr[j] == temp:
-                count += 1
-        if count != temp:
-            flag = False
-        i += temp
-    return flag
+    while i < n:
+        if i + seq[i] - 1 >= n:
+            return False
+        for j in range(i, i + seq[i]):
+            if seq[j] != seq[i]:
+                return False
+            
+        i += seq[i]
+        
+    return True
 
 
 def choose(curr_num):
