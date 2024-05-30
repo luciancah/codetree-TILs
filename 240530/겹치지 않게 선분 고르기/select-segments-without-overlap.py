@@ -20,19 +20,24 @@ def is_crossed(lines):
 
 # print(is_crossed([[1,2],[3,4],[5,6]]))
 
-def combinations(n,k):
-    global ans
-    if len(answer) == k:
-        line_answer = [lines[x] for x in answer]
-        if not is_crossed(line_answer):
-            ans = len(answer)
-        return
+def combinations(n, k):
+    def backtrack(start, path):
+        if len(path) == k:
+            line_answer = [lines[x] for x in path]
+            if not is_crossed(line_answer):
+                global ans
+                ans = len(path)
+            return
 
-    for i in range(n):
-        answer.append(i)
-        n = answer[-1] + 1
-        combinations(n, k)
-        answer.pop()
+        for i in range(start, n):
+            path.append(i)
+            backtrack(i + 1, path)
+            path.pop()
+
+    global ans
+    ans = 0
+    backtrack(0, [])
+    return ans
 
 for k in range(n, 0, -1):
     combinations(n, k)
