@@ -35,11 +35,25 @@ def recur(count):
             ans = min(ans, len(res))
         return
     
+    recur(count + 1)
     res.append(lines[count])
     recur(count + 1)
     res.pop()
-    recur(count + 1)
+    
 
 recur(0)
 
 print(ans)
+
+
+
+#재귀종료 조건
+#사다리를 설치 할 수 없으면 종료
+# cnt == 0 and depth == N:
+    # return ans
+
+# 사다리 설치
+    # a = recur(cnt-1,dept+1)
+# 사다리 미설치
+    # b = recur(cnt, depth +1)
+#    return min(a,b)
