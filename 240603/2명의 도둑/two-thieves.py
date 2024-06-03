@@ -35,11 +35,17 @@ for c in combs2:
     
     for i in range(m, 0, -1):
         r1_list = list(combinations(list(grid[r1[0]][r1[1]+i] for i in range(m)), i))
+        # print(r1_list)
         for r3 in r1_list:
             for j in range(m, 0, -1):
-                r2_list = list(combinations(list(grid[r2[0]][r2[1]+i] for i in range(m)), i))
+                r2_list = list(combinations(list(grid[r2[0]][r2[1]+i] for i in range(m)), j))
+                # print(r2_list)
                 for r4 in r2_list:
+                    # print(r3, r4, sum(r3), sum(r4))
                     if sum(r3) <= z and sum(r4) <= z:
+                        # print('match', r3, r4)
                         total = max(total, sum([x*x for x in r3]) + sum([x*x for x in r4]))
+                        # print('-------')
+                        # print(total)
 
 print(total)
