@@ -35,10 +35,12 @@ def recur(count):
             ans = min(ans, len(res))
         return
     
-    recur(count + 1)
+    
     res.append(lines[count])
     recur(count + 1)
     res.pop()
+    recur(count + 1)
+
     
 
 recur(0)
