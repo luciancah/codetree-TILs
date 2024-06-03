@@ -27,24 +27,19 @@ for c in combs:
     if is_possible(c):
         combs2.append(c)
 
-r1_max = 0
-r2_max = 0
+total = 0
 for c in combs2:
     r1, r2 = c
     r1_list = list(grid[r1[0]][r1[1]+i] for i in range(m))
     r2_list = list(grid[r2[0]][r2[1]+i] for i in range(m))
-
     
     for i in range(m, 0, -1):
-        r1_list2 = list(combinations(r1_list, i))
-        for r in r1_list2:
-            if sum(r) <= z:
-                r1_max = max(r1_max, sum([x*x for x in r]))
+        r1_list = list(combinations(list(grid[r1[0]][r1[1]+i] for i in range(m)), i))
+        for r3 in r1_list:
+            for j in range(m, 0, -1):
+                r2_list = list(combinations(list(grid[r2[0]][r2[1]+i] for i in range(m)), i))
+                for r4 in r2_list:
+                    if sum(r3) <= z and sum(r4) <= z:
+                        total = max(total, sum([x*x for x in r3]) + sum([x*x for x in r4]))
 
-    for i in range(m, 0, -1):
-        r2_list2 = list(combinations(r2_list, i))
-        for r in r2_list2:
-            if sum(r) <= z:
-                r2_max = max(r2_max, sum([x*x for x in r]))
-
-print(r1_max+r2_max)
+print(total)
