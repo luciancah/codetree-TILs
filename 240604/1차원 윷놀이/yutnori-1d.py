@@ -11,7 +11,7 @@ def calc(answers):
 max_ans = 0
 def choose(count):
     global max_ans
-    if count == 4:
+    if count == n:
         max_ans = max(max_ans, calc(answers))
         return
 
