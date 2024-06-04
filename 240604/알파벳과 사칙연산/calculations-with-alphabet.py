@@ -5,9 +5,6 @@ expq = deque(exp)
 expq.appendleft('+')
 expq = list(expq)
 
-ans = []
-max_ans = 0
-
 
 def solve_exp(expq):
     ans = 0
@@ -25,26 +22,19 @@ def solve_exp(expq):
         i+= 2
     return ans
 
-# solve_exp(['+', '4', '-', '1', '*', '2'])
-nums = ['a', 'b', 'c', 'd']
-
-max_ans = 0
+max_ans = -99999
 for a in range(1, 5):
     for b in range(1, 5):
         for c in range(1, 5):
             for d in range(1, 5):
                 for e in range(1, 5):
                     for f in range(1, 5):
-                        # print(a, b, c, d)
                         l = expq[:]
                         for i in range(len(l)):
-                            # print(i, a, b, c, d)
                             if l[i] == 'a':
                                 l[i] = a
                             elif l[i] == 'b':
-                                # print('asf', l[i], b)
                                 l[i] = b
-                                # print('asf', l[i], b)
                             elif l[i] == 'c':
                                 l[i] = c
                             elif l[i] == 'd':
@@ -53,27 +43,6 @@ for a in range(1, 5):
                                 l[i] = e
                             elif l[i] == 'f':
                                 l[i] = f
-                        # print(l)
                         max_ans = max(max_ans, solve_exp(l))
 
 print(max_ans)
-
-
-# def recur(expq):
-#     global ans
-#     if len(expq) == 0:
-#         print(ans)
-#         return
-
-#     n = expq.popleft()
-#     if n in nums:
-#         for a in range(1, 5):
-#             ans.append(str(a))
-#             recur(expq)
-#             ans.pop()
-#     else:
-#         ans.append(n)
-#         recur(expq)
-#         ans.pop()
-
-# recur(expq)
