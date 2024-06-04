@@ -1,48 +1,44 @@
-from collections import deque
+import sys
 
-exp = input()
-expq = deque(exp)
-expq.appendleft('+')
-expq = list(expq)
+INT_MIN = -sys.maxsize
+
+# 변수 선언 및 입력:
+n = 6
+expression = input()
+num = [0 for _ in range(n)]
+ans = INT_MIN
 
 
-def solve_exp(expq):
-    ans = 0
-    i = 0
-    while i < len(expq):
-        o1 = expq[i]
-        o2 = expq[i+1]
+def conv(idx):
+    return num[ord(expression[idx]) - ord('a')]
 
-        if o1 == '+':
-            ans += o2
-        elif o1 == '-':
-            ans -= o2
+
+def calc():
+    length = len(expression)
+    value = conv(0)
+    for i in range(2, length, 2):
+        if expression[i - 1] == '+':
+            value += conv(i)
+        elif expression[i - 1] == '-':
+            value -= conv(i)
         else:
-            ans *= o2
-        i+= 2
-    return ans
+            value *= conv(i)
+    return value
 
-max_ans = -99999
-for a in range(1, 5):
-    for b in range(1, 5):
-        for c in range(1, 5):
-            for d in range(1, 5):
-                for e in range(1, 5):
-                    for f in range(1, 5):
-                        l = expq[:]
-                        for i in range(len(l)):
-                            if l[i] == 'a':
-                                l[i] = a
-                            elif l[i] == 'b':
-                                l[i] = b
-                            elif l[i] == 'c':
-                                l[i] = c
-                            elif l[i] == 'd':
-                                l[i] = d
-                            elif l[i] == 'e':
-                                l[i] = e
-                            elif l[i] == 'f':
-                                l[i] = f
-                        max_ans = max(max_ans, solve_exp(l))
 
-print(max_ans)
+# 'a'부터 'f'까지 순서대로
+# 0부터 5번째 index까지의 값을 
+# 1~4 중에 하나로 채웁니다.
+def find_max(cnt):
+    global ans
+    
+    if cnt == n:
+        ans = max(ans, calc())
+        return
+    
+    for i in range(1, 5):
+        num[cnt] = i
+        find_max(cnt + 1)
+
+find_max(0)
+print(ans)
