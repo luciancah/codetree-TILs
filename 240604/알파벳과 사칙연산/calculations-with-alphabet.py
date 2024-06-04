@@ -33,24 +33,31 @@ for a in range(1, 5):
     for b in range(1, 5):
         for c in range(1, 5):
             for d in range(1, 5):
-                # print(a, b, c, d)
-                l = expq[:]
-                for i in range(len(l)):
-                    # print(i, a, b, c, d)
-                    if l[i] == 'a':
-                        l[i] = a
-                    elif l[i] == 'b':
-                        # print('asf', l[i], b)
-                        l[i] = b
-                        # print('asf', l[i], b)
-                    elif l[i] == 'c':
-                        l[i] = c
-                    elif l[i] == 'd':
-                        l[i] = d
-                # print(l)
-                max_ans = max(max_ans, solve_exp(l))
+                for e in range(1, 5):
+                    for f in range(1, 5):
+                        # print(a, b, c, d)
+                        l = expq[:]
+                        for i in range(len(l)):
+                            # print(i, a, b, c, d)
+                            if l[i] == 'a':
+                                l[i] = a
+                            elif l[i] == 'b':
+                                # print('asf', l[i], b)
+                                l[i] = b
+                                # print('asf', l[i], b)
+                            elif l[i] == 'c':
+                                l[i] = c
+                            elif l[i] == 'd':
+                                l[i] = d
+                            elif l[i] == 'e':
+                                l[i] = e
+                            elif l[i] == 'f':
+                                l[i] = f
+                        # print(l)
+                        max_ans = max(max_ans, solve_exp(l))
 
 print(max_ans)
+
 
 # def recur(expq):
 #     global ans
