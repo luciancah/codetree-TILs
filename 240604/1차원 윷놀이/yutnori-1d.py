@@ -16,12 +16,9 @@ def choose(count):
         return
 
     for i in range(len(answers)):
-        if answers[i] >= m:
-            continue
-        else:
-            answers[i] += moves[count]
-            choose(count + 1)
-            answers[i] -= moves[count]
+        answers[i] += moves[count]
+        choose(count + 1)
+        answers[i] -= moves[count]
 
     return
 
