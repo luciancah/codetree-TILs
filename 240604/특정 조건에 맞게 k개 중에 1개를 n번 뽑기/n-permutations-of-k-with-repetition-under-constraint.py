@@ -20,4 +20,4 @@ def choose(curr_num):
 
     return
 
-choose(1)
+choose(0)
