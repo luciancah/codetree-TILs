@@ -12,7 +12,7 @@ def choose(curr_num):
         return
 
     for i in range(1, k+1):
-        if len(answer) >= 3 and answer[i-2] == answer[i-1] == answer[i]:
+        if len(answer) >= 2 and answer[i-2] == answer[i-1] == i:
             continue
         answer.append(i)
         choose(curr_num + 1)
