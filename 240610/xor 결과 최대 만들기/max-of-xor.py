@@ -10,9 +10,13 @@ def recur(ans, count):
     if count == m:
         max_ans = max(max_ans, ans)
         return
+
+    if ans < max_ans:
+        return
     
     for num in arr:
         recur(ans^num, count+1)
+    # recur(max(xor_arr), count+1)
 
 recur(0, 0)
 
