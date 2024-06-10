@@ -3,7 +3,8 @@ ans = []
 
 def recur(ans, count):
     if count == m:
-        print(*ans)
+        if sorted(ans) == ans:
+            print(*ans)
         return
     
     for i in range(1, n+1):
