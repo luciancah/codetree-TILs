@@ -3,14 +3,16 @@ ans = []
 
 def recur(ans, count):
     if count == m:
-        if sorted(ans) == ans:
-            print(*ans)
+        print(*ans)
         return
     
-    for i in range(1, n+1):
+    for i in range(ans[-1], n+1):
         if i not in ans:
             ans.append(i)
             recur(ans, count + 1)
             ans.pop()
 
-recur(ans, 0)
+for i in range(1, n+1):
+    ans.append(i)
+    recur(ans, 1)
+    ans.pop()
