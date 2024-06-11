@@ -12,10 +12,11 @@ min_dist = 999999999
 def recur(count, curr_pos, dist, track):
     global min_dist
     if count == n:
-        d = dist + weight[curr_pos][0]
-        # print(count, curr_pos, dist, d, track)
-        min_dist = min(min_dist, d)
-        return
+        d = weight[curr_pos][0]
+        if not d == 0:
+            # print(count, curr_pos, dist, d, track)
+            min_dist = min(min_dist, d+dist)
+            return
 
     for i in range(n):
         if not visited[i] and weight[curr_pos][i] != 0:
