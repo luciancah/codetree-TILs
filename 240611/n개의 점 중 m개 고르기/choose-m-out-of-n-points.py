@@ -16,12 +16,13 @@ selected_dots = []
 
 def recur(count, curr_index, selected_dots):
     global min_dist
+    max_dist = 0
     if count == m:
         for i in range(len(selected_dots)):
             for j in range(i+1, len(selected_dots)):
                 dist = calc_dist(selected_dots[i], selected_dots[j])
-                min_dist = min(dist, min_dist)
-        # print(selected_dots)
+                max_dist = max(dist, max_dist)
+        min_dist = min(min_dist, max_dist)
         return
 
     if curr_index == n:
