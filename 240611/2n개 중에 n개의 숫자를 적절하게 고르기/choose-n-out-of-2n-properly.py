@@ -13,8 +13,10 @@ min_diff = sys.maxsize
 def recur(group1, group2, curr_idx):
     global min_diff
     if curr_idx == 2 * n:
-        diff = abs(sum(group1) - sum(group2))
-        min_diff = min(min_diff, diff)
+        if len(group1) == n:
+            # print(group1, group2)
+            diff = abs(sum(group1) - sum(group2))
+            min_diff = min(min_diff, diff)
         return
 
     group1.append(nums[curr_idx])
