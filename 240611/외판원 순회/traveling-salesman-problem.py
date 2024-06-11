@@ -4,6 +4,7 @@ for _ in range(n):
     weight.append(list(map(int,input().split())))
 
 visited = [False] * n
+visited[0] = True
 
 track = []
 min_dist = 999999999
@@ -26,6 +27,6 @@ def recur(count, curr_pos, dist, track):
             dist -= d
             track.pop()
 
-recur(0, 0, 0, track)
+recur(1, 0, 0, track)
 
 print(min_dist)
