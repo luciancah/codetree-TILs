@@ -1,7 +1,7 @@
 import sys
 
 n = int(input())
-grid = [input() for _ in range(4)]
+grid = [input() for _ in range(n)]
 coins = {}
 
 for i in range(n):
