@@ -10,7 +10,7 @@ def in_range(x, y):
 def can_go(x, y):
     if not in_range(x, y):
         return False
-    if visited[x][y] or grid[x][y] == 0:
+    if visited[x][y] == 1 or grid[x][y] == 0:
         return False
     return True
 
@@ -34,7 +34,11 @@ vils2 = []
 for i in range(n):
     for j in range(n):
             prev_order = order
-            dfs(i, j)
+            if visited[i][j] == 0 and grid[i][j] == 1:
+                order += 1
+                visited[i][j] = 1
+                answer[i][j] = order
+                dfs(i, j)
             if order != prev_order:
                 vils.append(order)
 
