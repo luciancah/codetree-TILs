@@ -54,4 +54,4 @@ while ans[-1] != 0:
     ans.append(len(people_nums))
     k += 1
 
-print(max(ans), ans.index(max(ans)))
+print(ans.index(max(ans)), max(ans))
