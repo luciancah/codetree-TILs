@@ -31,7 +31,7 @@ for i in range(n):
             visited[i][j] = True
             size += 1
             dfs(i, j)
-        if size != 0 and size >= 4:
+        if size != 0:
             blocks.append(size)
 
-print(len(blocks), max(blocks))
+print(len([x for x in blocks if x >= 4]), max(blocks))
