@@ -17,7 +17,7 @@ def can_go(x, y):
 def dfs(x, y):
     global order
 
-    dxs, dys = [1, 0, 0, -1], [0, 1, -1, 0]
+    dxs, dys = [1, 0, -1, 0], [0, 1, 0, -1]
 
     for dx, dy in zip(dxs, dys):
         nx, ny = x + dx, y + dy
