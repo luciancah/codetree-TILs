@@ -35,10 +35,10 @@ def bfs():
 answer = [[0 for _ in range(n)] for _ in range(n)]
 visited = [[False for _ in range(n)] for _ in range(n)]
 
+q = deque()
 for start in starts:
-    q = deque()
     push(start[0]-1, start[1]-1)
-    bfs()
+bfs()
 
 res = 0
 for i in range(n):
