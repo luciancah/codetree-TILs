@@ -38,8 +38,8 @@ def bfs():
                     max_num = max(grid[nx][ny], max_num)
                 push(nx, ny)
 
-r, c = r, c
-me = grid[r-1][c-1]
+r, c = r-1, c-1
+me = grid[r][c]
 max_num = 0
 
 for i in range(k):
@@ -50,7 +50,7 @@ for i in range(k):
     max_num = 0
     # print('iteration', r, c, me)
 
-    push(r-1, c-1)
+    push(r, c)
     bfs()
 
     for x in range(n):
