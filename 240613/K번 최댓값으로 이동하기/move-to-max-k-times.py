@@ -11,7 +11,7 @@ def can_go(x, y):
     global me
     if not in_range(x, y):
         return False
-    if visited[x][y] or grid[x][y] > me:
+    if visited[x][y] or grid[x][y] >= me:
         return False
     return True
 
@@ -25,28 +25,42 @@ def push(x, y):
 
 
 def bfs():
+    global max_num
     dxs, dys = [-1, 0, 1, 0], [0, -1, 0, 1]
 
     while q:
         x, y = q.popleft()
-
         for dx, dy in zip(dxs, dys):
             nx, ny = x + dx, y + dy
 
             if can_go(nx, ny):
+                if grid[nx][ny] < me:
+                    max_num = max(grid[nx][ny], max_num)
                 push(nx, ny)
 
 r, c = r, c
 me = grid[r-1][c-1]
+max_num = 0
+
 for i in range(k):
     answer = [[0 for _ in range(n)] for _ in range(n)]
     visited = [[False for _ in range(n)] for _ in range(n)]
     q = deque()
     order = 1
-    
+    max_num = 0
+    # print('iteration', r, c, me)
 
     push(r-1, c-1)
     bfs()
 
-for i in range(n):
-    print(*answer[i])
+    for x in range(n):
+        for y in range(n):
+            if grid[x][y] == max_num:
+                r, c = x, y
+                # print(r, c)
+                me = grid[x][y]
+                break
+        if grid[x][y] == max_num:
+            break
+
+print(r+1, c+1)
