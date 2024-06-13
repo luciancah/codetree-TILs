@@ -58,26 +58,27 @@ def create_grid(r, grid):
                 grid[i][j] = 1
     return grid
 
+max_visited = 0
 
 for nr in combinations(rocks, len(rocks)-m):
-  # print(nr, rocks, len(rocks)-m)
+#   print(nr, rocks, len(rocks)-m)
   empty = [[0] * n for _ in range(n)]
   grid = create_grid(list(nr), empty)
 
-  # for i in range(n):
-  #     print(*grid[i])
-  # print()
+#   for i in range(n):
+#       print(*grid[i])
+#   print()
 
 
   visited = [[0] * n for _ in range(n)]
-  max_visited = 0
+  
 
   for r, c in starts:
       q = deque()
       push(r, c)
       bfs()
-      # print('-------')
-      # print(calc_visited(visited))
+    #   print('-------')
+    #   print(calc_visited(visited))
       max_visited = max(calc_visited(visited), max_visited)
 
 print(max_visited)
