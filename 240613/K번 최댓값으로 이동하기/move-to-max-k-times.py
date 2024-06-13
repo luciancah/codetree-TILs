@@ -55,12 +55,12 @@ for i in range(k):
 
     for x in range(n):
         for y in range(n):
-            if grid[x][y] == max_num:
-                r, c = x, y
-                # print(r, c)
-                me = grid[x][y]
+            if grid[y][x] == max_num:
+                r, c = y, x
+                # print(r, c, grid[r][c])
+                me = grid[y][x]
                 break
-        if grid[x][y] == max_num:
+        if grid[y][x] == max_num:
             break
 
 print(r+1, c+1)
