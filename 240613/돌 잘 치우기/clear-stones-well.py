@@ -68,3 +68,5 @@ for nr in combinations(rocks, len(rocks)-m):
         bfs()
 
         max_visited = max(calc_visited(visited), max_visited)
+
+print(max_visited)
