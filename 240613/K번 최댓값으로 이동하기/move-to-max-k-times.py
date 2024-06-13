@@ -43,6 +43,7 @@ me = grid[r][c]
 max_num = 0
 
 for i in range(k):
+    # print('i', i)
     answer = [[0 for _ in range(n)] for _ in range(n)]
     visited = [[False for _ in range(n)] for _ in range(n)]
     q = deque()
@@ -53,14 +54,24 @@ for i in range(k):
     push(r, c)
     bfs()
 
+    # for x in range(n):
+    #     print(*answer[x])
+    # print()
+
+    # for x in range(n):
+    #     print(*grid[x])
+    # print()
+
     for x in range(n):
         for y in range(n):
-            if grid[y][x] == max_num:
-                r, c = y, x
+            # if x == 1 and y == 0:
+            #     print(max_num, x, y, grid[x][y], answer[x][y])
+            if grid[x][y] == max_num and answer[x][y]:
+                r, c = x, y
                 # print(r, c, grid[r][c])
-                me = grid[y][x]
+                me = grid[x][y]
                 break
-        if grid[y][x] == max_num:
+        if grid[x][y] == max_num and answer[x][y]:
             break
 
 print(r+1, c+1)
