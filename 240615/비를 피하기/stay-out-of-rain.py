@@ -35,15 +35,14 @@ def can_go(x, y):
 
 def bfs():
     dxs, dys = [1, 0, 0, -1], [0, 1, -1, 0]
-    step = 2
 
     while q:
         x, y = q.popleft()
+        depth = visited[x][y]
         for dx, dy in zip(dxs, dys):
             nx, ny = x + dx, y + dy
             if can_go(nx, ny):
-                visited[nx][ny] = step
-                step += 1
+                visited[nx][ny] = depth + 1
                 q.append((nx, ny))
 
 for key, value in ppls.items():
