@@ -59,7 +59,7 @@ for key, value in ppls.items():
         nx, ny = nkey
         if visited[nx][ny]:
             min_dist = min(min_dist, visited[nx][ny]-1)
-    answer[x][y] = min_dist
+    answer[x][y] = min_dist if min_dist != 99999 else -1
 
 for i in range(n):
     print(*answer[i])
