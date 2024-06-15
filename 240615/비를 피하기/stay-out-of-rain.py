@@ -42,8 +42,12 @@ def bfs():
         for dx, dy in zip(dxs, dys):
             nx, ny = x + dx, y + dy
             if can_go(nx, ny):
+                if (nx, ny) in dests.keys():
+                    return depth
                 visited[nx][ny] = depth + 1
                 q.append((nx, ny))
+
+    return -1
 
 for key, value in ppls.items():
     x, y = key
@@ -52,14 +56,14 @@ for key, value in ppls.items():
 
     q.append((x, y))
     visited[x][y] = 1
-    bfs()
+    min_dist = bfs()
 
-    min_dist = 99999
-    for nkey, nvalue in dests.items():
-        nx, ny = nkey
-        if visited[nx][ny]:
-            min_dist = min(min_dist, visited[nx][ny]-1)
-    answer[x][y] = min_dist if min_dist != 99999 else -1
+    # min_dist = 99999
+    # for nkey, nvalue in dests.items():
+    #     nx, ny = nkey
+    #     if visited[nx][ny]:
+    #         min_dist = min(min_dist, visited[nx][ny]-1)
+    answer[x][y] = min_dist
 
 for i in range(n):
     print(*answer[i])
