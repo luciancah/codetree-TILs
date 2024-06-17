@@ -28,16 +28,17 @@ def bfs():
                 q.append((nx, ny))
 
 
-sr, sc = 0, 0
+starts = []
 for i in range(n):
     for j in range(n):
         if grid[i][j] == 2:
-            sr, sc = i, j
+            starts.append([i, j])
 
 q = deque()
 visited = [[0] * n for _ in range(n)]
-q.append((sr, sc))
-visited[sr][sc] = 1
+for s in starts:
+    q.append(s)
+    visited[s[0]][s[1]] = 1
 bfs()
 
 for i in range(n):
