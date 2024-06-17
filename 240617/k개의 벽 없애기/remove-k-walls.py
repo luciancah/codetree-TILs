@@ -35,15 +35,15 @@ def bfs():
     dxs, dys = [1, 0, 0, -1], [0, 1, -1, 0]
     while q:
         x, y = q.popleft()
-        dist = visited[x][y]
         for dx, dy in zip(dxs, dys):
+            dist = visited[x][y]
             nx, ny = x + dx, y + dy
             if can_move(nx, ny):
+                if (nx, ny) == (er, ec):
+                    return dist
                 q.append((nx, ny))
                 dist += 1
                 visited[nx][ny] = dist
-                if (nx, ny) == (er, ec):
-                    return dist-1
 
     return 9999
 
@@ -64,6 +64,15 @@ for nw in new_walls:
     visited[sr][sc] = 1
     dist = bfs()
     min_dist = min(dist, min_dist)
+
+    # print(dist)
+    # for i in range(n):
+    #     print(*visited[i])
+    # print()
+    # for i in range(n):
+    #     print(*new_grid[i])
+    # print()
+    
 
 if min_dist == 9999:
     print(-1)
