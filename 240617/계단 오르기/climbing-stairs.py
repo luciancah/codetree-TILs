@@ -13,7 +13,7 @@ dp[1] = 0
 dp[2] = 1
 dp[3] = 1
 
-for i in range(2, n):
+for i in range(4, n):
     dp[i] = dp[i-2] + dp[i-3]
 
 print(dp[n])
