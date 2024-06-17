@@ -32,10 +32,10 @@ def can_move(x, y):
 
 def bfs():
     count = k
-    dist = 0
     dxs, dys = [1, 0, 0, -1], [0, 1, -1, 0]
     while q:
         x, y = q.popleft()
+        dist = visited[x][y]
         for dx, dy in zip(dxs, dys):
             nx, ny = x + dx, y + dy
             if can_move(nx, ny):
