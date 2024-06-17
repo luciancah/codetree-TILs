@@ -14,6 +14,6 @@ dp[2] = 1
 dp[3] = 1
 
 for i in range(2, n):
-    dp[i] = dp(i-2) + dp(i-3)
+    dp[i] = dp[i-2] + dp[i-3]
 
 print(dp[n])
