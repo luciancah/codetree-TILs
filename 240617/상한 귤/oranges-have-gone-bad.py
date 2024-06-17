@@ -21,7 +21,7 @@ def bfs():
         x, y = q.popleft()
         for dx, dy in zip(dxs, dys):
             nx, ny = x + dx, y + dy
-            depth = visited[nx][ny]
+            depth = visited[x][y]
             if can_go(nx, ny):
                 depth += 1
                 visited[nx][ny] = depth
@@ -39,6 +39,10 @@ visited = [[0] * n for _ in range(n)]
 q.append((sr, sc))
 visited[sr][sc] = 1
 bfs()
+
+for i in range(n):
+    for j in range(n):
+        visited[i][j] = visited[i][j] - 1
 
 for i in range(n):
     print(*visited[i])
