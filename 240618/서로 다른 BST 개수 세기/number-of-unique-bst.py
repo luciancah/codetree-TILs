@@ -1,12 +1,20 @@
 n = int(input())
 dp = [0] * 21
 
-dp[0] = 1
-dp[1] = 1
-dp[2] = 2
-dp[3] = 5
+memo = [-1 for _ in range(n+1)]
 
-for i in range(3, n):
-    dp[i] = dp[i-1] * dp[i-2]
+def dp(n):
+    if memo[n] != -1:
+        return memo[n]
 
-print(dp[n])
+    if n <= 1:
+        return 1
+    
+    ans = 0
+    for i in range(n):
+        ans += dp(i) * dp(n-i-1)
+
+    memo[n] = ans
+    return memo[n]
+
+print(dp(n))
