@@ -14,14 +14,11 @@ def init():
         # 왼쪽으로
         dp[i][n-1] = dp[i-1][n-1] + grid[i][n-1]
 
+
 init()
 
 for i in range(1, n):
     for j in range(n-2, -1, -1):
         dp[i][j] = min(dp[i][j+1], dp[i-1][j]) + grid[i][j]
 
-ans = sys.maxsize
-for j in range(n):
-    ans = min(ans, dp[n-1][j])
-
-print(ans)
+print(dp[n-1][0])
