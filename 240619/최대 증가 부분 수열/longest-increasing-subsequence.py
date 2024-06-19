@@ -20,7 +20,7 @@ for i in range(1, n):
         if a[j] < a[i]:
             if dp[j] == -sys.maxsize:
                 dp[j] = 1
-            print(j, i)
+            # print(j, i)
             dp[i] = max(dp[j] + 1, dp[i])
 
 
