@@ -1,58 +1,62 @@
 import sys
 
+INT_MAX = sys.maxsize
+
 n = int(input())
-grid = [list(map(int, input().split())) for _ in range(n)]
+num = [list(map(int, input().split())) for _ in range(n)]
+dp = {}
 
-dp = [[{'mx': 0, 'mn': 0} for _ in range(n)] for _ in range(n)]
-
-def init():
-    dp[0][0]['mx'] = grid[0][0]
-    dp[0][0]['mn'] = grid[0][0]
+def initialize():
+    dp[(0, 0, num[0][0])] = num[0][0]
 
     for i in range(1, n):
-        dp[i][0]['mn'] = min(dp[i-1][0]['mn'], grid[i][0])
-        dp[i][0]['mx'] = max(dp[i-1][0]['mx'], grid[i][0])
+        for k in list(dp.keys()):
+            if k[0] == i - 1 and k[1] == 0:
+                new_min = min(k[2], num[i][0])
+                new_max = max(dp[k], num[i][0])
+                if (i, 0, new_min) not in dp:
+                    dp[(i, 0, new_min)] = new_max
+                else:
+                    dp[(i, 0, new_min)] = min(dp[(i, 0, new_min)], new_max)
+
+    for j in range(1, n):
+        for k in list(dp.keys()):
+            if k[0] == 0 and k[1] == j - 1:
+                new_min = min(k[2], num[0][j])
+                new_max = max(dp[k], num[0][j])
+                if (0, j, new_min) not in dp:
+                    dp[(0, j, new_min)] = new_max
+                else:
+                    dp[(0, j, new_min)] = min(dp[(0, j, new_min)], new_max)
+
+def solve():
+    initialize()
 
     for i in range(1, n):
-        dp[0][i]['mn'] = min(dp[0][i-1]['mn'], grid[0][i])
-        dp[0][i]['mx'] = max(dp[0][i-1]['mx'], grid[0][i])
+        for j in range(1, n):
+            new_states = {}
+            for k in list(dp.keys()):
+                if k[0] == i - 1 and k[1] == j:
+                    new_min = min(k[2], num[i][j])
+                    new_max = max(dp[k], num[i][j])
+                    if (i, j, new_min) not in new_states:
+                        new_states[(i, j, new_min)] = new_max
+                    else:
+                        new_states[(i, j, new_min)] = min(new_states[(i, j, new_min)], new_max)
+                if k[0] == i and k[1] == j - 1:
+                    new_min = min(k[2], num[i][j])
+                    new_max = max(dp[k], num[i][j])
+                    if (i, j, new_min) not in new_states:
+                        new_states[(i, j, new_min)] = new_max
+                    else:
+                        new_states[(i, j, new_min)] = min(new_states[(i, j, new_min)], new_max)
+            dp.update(new_states)
 
+solve()
 
-init()
+ans = INT_MAX
+for k in range(1, 101):
+    if (n - 1, n - 1, k) in dp:
+        ans = min(ans, dp[(n - 1, n - 1, k)] - k)
 
-for i in range(1, n):
-    for j in range(1, n):
-        p1 = abs(min(dp[i-1][j]['mn'], grid[i][j]) - max(dp[i-1][j]['mx'], grid[i][j]))
-        p2 = abs(min(dp[i][j-1]['mn'], grid[i][j]) - max(dp[i][j-1]['mx'], grid[i][j]))
-
-        if p1 < p2:
-            dp[i][j]['mn'] = min(dp[i-1][j]['mn'], grid[i][j])
-            dp[i][j]['mx'] = max(dp[i-1][j]['mx'], grid[i][j])
-        elif p1 >= p2:
-            dp[i][j]['mn'] = min(dp[i][j-1]['mn'], grid[i][j])
-            dp[i][j]['mx'] = max(dp[i][j-1]['mx'], grid[i][j])
-
-# for i in range(n):
-#     print(*dp[i])
-
-
-a1 = abs(dp[-1][-1]['mx'] - dp[-1][-1]['mn'])
-
-dp = [[{'mx': 0, 'mn': 0} for _ in range(n)] for _ in range(n)]
-init()
-
-for i in range(1, n):
-    for j in range(1, n):
-        p1 = abs(min(dp[i-1][j]['mn'], grid[i][j]) - max(dp[i-1][j]['mx'], grid[i][j]))
-        p2 = abs(min(dp[i][j-1]['mn'], grid[i][j]) - max(dp[i][j-1]['mx'], grid[i][j]))
-
-        if p1 <= p2:
-            dp[i][j]['mn'] = min(dp[i-1][j]['mn'], grid[i][j])
-            dp[i][j]['mx'] = max(dp[i-1][j]['mx'], grid[i][j])
-        elif p1 > p2:
-            dp[i][j]['mn'] = min(dp[i][j-1]['mn'], grid[i][j])
-            dp[i][j]['mx'] = max(dp[i][j-1]['mx'], grid[i][j])
-
-b1 = abs(dp[-1][-1]['mx'] - dp[-1][-1]['mn'])
-
-print(min(a1, b1))
+print(ans)
