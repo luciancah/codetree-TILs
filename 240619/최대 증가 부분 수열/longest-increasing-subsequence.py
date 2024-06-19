@@ -2,7 +2,7 @@ import sys
 
 n = int(input())
 dp = [0] * n
-a = [list(map(int, input().split())) for _ in range(n)]
+a = list(map(int, input().split()))
 
 def init():
     for i in range(n):
