@@ -10,8 +10,8 @@ def dfs(x, y):
         return dp[x][y]
     
     max_length = 1
-    dxs = [-1, 1,  0, 0]
-    dys = [ 0, 0, -1, 1]
+    dxs, dys = [1, 0, 0, -1], [0, 1, -1, 1]
+    # dxs, dys = [-1, 1, 0, 0], [0, 0, -1, 1]
     for dx, dy in zip(dxs, dys):
         nx, ny = x + dx, y + dy
         if in_range(nx, ny) and grid[nx][ny] > grid[x][y]:
