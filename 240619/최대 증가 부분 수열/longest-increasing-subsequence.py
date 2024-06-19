@@ -24,6 +24,7 @@ for i in range(1, n):
             # dp[i] = max(dp[i], dp[j] + 1)
             dp[i] = max(dp[j] + 1, dp[i])
 
+# print(dp)
 
 ans = 0
 for i in range(n):
