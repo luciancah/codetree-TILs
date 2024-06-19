@@ -28,7 +28,7 @@ for i in range(1, n):
         p1 = abs(min(dp[i-1][j]['mn'], grid[i][j]) - max(dp[i-1][j]['mx'], grid[i][j]))
         p2 = abs(min(dp[i][j-1]['mn'], grid[i][j]) - max(dp[i][j-1]['mx'], grid[i][j]))
 
-        if p1 <= p2:
+        if p1 < p2:
             dp[i][j]['mn'] = min(dp[i-1][j]['mn'], grid[i][j])
             dp[i][j]['mx'] = max(dp[i-1][j]['mx'], grid[i][j])
         else:
@@ -36,5 +36,8 @@ for i in range(1, n):
             dp[i][j]['mx'] = max(dp[i][j-1]['mx'], grid[i][j])
 
 
+
+# for i in range(n):
+#     print(*dp[i])
 
 print(abs(dp[-1][-1]['mx'] - dp[-1][-1]['mn']))
