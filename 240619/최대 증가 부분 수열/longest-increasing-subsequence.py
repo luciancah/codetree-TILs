@@ -11,22 +11,18 @@ def init():
     for i in range(n):
         dp[i] = -sys.maxsize
 
-    dp[0] = a[0]
+    dp[0] = 1
 
 init()
 
 for i in range(1, n):
-    count = 0
     for j in range(0, i):
         if dp[j] == -sys.maxsize:
             continue
 
-        # if j + a[j] >= i:
-        #     dp[i] = max(dp[i], dp[j] + 1)
-        if j < i:
-            count += 1
-        
-    dp[i] = count
+        if a[j] < a[i]:
+            # dp[i] = max(dp[i], dp[j] + 1)
+            dp[i] = max(dp[j] + 1, dp[i])
 
 
 ans = 0
