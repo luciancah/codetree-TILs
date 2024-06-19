@@ -15,7 +15,8 @@ for i in range(1, n):
     for j in range(0, i):
         if dp[j] == -sys.maxsize:
             continue
-        if a[j] < a[i]:
+        if j + a[j] >= i:
             dp[i] = max(dp[j] + 1, dp[i])
 
-print(max(dp))
+# print(dp)
+print(max(dp)-1)
