@@ -17,12 +17,12 @@ init()
 
 for i in range(1, n):
     for j in range(0, i):
-        if dp[j] == -sys.maxsize:
-            continue
-
         if a[j] < a[i]:
-            # dp[i] = max(dp[i], dp[j] + 1)
+            if dp[j] == -sys.maxsize:
+                dp[j] = 1
+            print(j, i)
             dp[i] = max(dp[j] + 1, dp[i])
+
 
 # print(dp)
 
