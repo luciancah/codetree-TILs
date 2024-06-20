@@ -20,11 +20,12 @@ def is_crossed(l1, l2):
             return True
     return False
 
+ans = 0
 
 for k in range(n):
     dp = [0] * n
     dp[k] = 0
-    for i in range(k, n):
+    for i in range(k+1, n):
         max_dp = 0
         for j in range(0, i):
             if not is_crossed(lines[i], lines[j]):
@@ -32,4 +33,7 @@ for k in range(n):
 
         dp[i] = max_dp
 
-print(max(dp)+1)
+    ans = max(max(dp)+1, ans)
+
+
+print(ans)
