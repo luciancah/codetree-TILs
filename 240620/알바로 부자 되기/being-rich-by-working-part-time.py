@@ -13,6 +13,8 @@ for i in range(1, n):
     for j in range(0, i):
         if grid[j][1] < grid[i][0]:
             max_money = max(grid[i][2] + dp[j], max_money)
+        else:
+            max_money = max(max_money, grid[i][2])
     dp[i] = max_money
 # print(dp)
 print(max(dp))
