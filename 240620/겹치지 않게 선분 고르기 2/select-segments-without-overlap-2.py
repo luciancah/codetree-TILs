@@ -22,18 +22,19 @@ def is_crossed(l1, l2):
 
 ans = 0
 
-for k in range(n):
-    dp = [1] * n
-    dp[k] = 1
-    for i in range(k, n):
-        max_dp = 1
-        for j in range(0, i):
-            if not is_crossed(lines[i], lines[j]):
-                max_dp = max(max_dp, dp[j] + 1)
+lines.sort(key=lambda x: x[0])
 
-        dp[i] = max_dp
+dp = [1] * n
+# dp[k] = 1
+for i in range(n):
+    max_dp = 1
+    for j in range(0, i):
+        if not is_crossed(lines[i], lines[j]):
+            max_dp = max(max_dp, dp[j] + 1)
 
-    ans = max(max(dp), ans)
-    # print(dp)
+    dp[i] = max_dp
+
+ans = max(max(dp), ans)
+# print(dp)
 
 print(ans)
