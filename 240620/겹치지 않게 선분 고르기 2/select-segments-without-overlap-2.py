@@ -23,8 +23,8 @@ def is_crossed(l1, l2):
 ans = 0
 
 for k in range(n):
-    dp = [0] * n
-    dp[k] = 0
+    dp = [1] * n
+    dp[k] = 1
     for i in range(k, n):
         max_dp = 1
         for j in range(0, i):
