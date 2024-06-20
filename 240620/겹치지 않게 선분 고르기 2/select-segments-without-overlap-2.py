@@ -12,13 +12,16 @@ nC(1~n) 하면 터지긴 할듯
 '''
 
 def is_crossed(l1, l2):
-    if l1[0] <= l2[0]:
-        if l1[1] >= l2[0]:
-            return True
-    elif l1[0] >= l2[0]:
-        if l1[1] <= l2[1]:
-            return True
-    return False
+    # l1 and l2 are tuples or lists representing the line segments as (start, end)
+    # Ensure l1 is ordered such that l1[0] <= l1[1]
+    if l1[0] > l1[1]:
+        l1 = (l1[1], l1[0])
+    # Ensure l2 is ordered such that l2[0] <= l2[1]
+    if l2[0] > l2[1]:
+        l2 = (l2[1], l2[0])
+    
+    # Check if the segments overlap
+    return not (l1[1] < l2[0] or l2[1] < l1[0])
 
 ans = 0
 
