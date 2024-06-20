@@ -9,7 +9,7 @@ dp[0][0] = 1
 # print()
 
 for i in range(1, n):
-    for j in range(1, n):
+    for j in range(1, m):
         new_count = 0
         for k in range(0, i+1):
             for l in range(0, j+1):
