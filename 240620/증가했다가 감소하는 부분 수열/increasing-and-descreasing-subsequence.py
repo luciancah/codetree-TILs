@@ -22,7 +22,7 @@ for i in range(n):
     d1 = dp1[i]
     d2 = dp2[i]
 
-    if d1 + d2 - 1 > max_dp and 2 * i <= n + 1:
+    if d1 + d2 - 1 > max_dp:
         max_dp = d1 + d2 - 1
 
 # print(dp1)
