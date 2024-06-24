@@ -5,7 +5,8 @@ dp[0] = 0
 
 for i in range(n):
     for j in range(m, -1, -1):
-        dp[j] = min(dp[j], dp[j-nums[i]] + 1)
+        if j >= nums[i]:
+            dp[j] = min(dp[j], dp[j-nums[i]] + 1)
 
 if dp[-1] == 10001:
     print('No')
