@@ -6,7 +6,7 @@ dp = [0 for _ in range(m+1)]
 dp[0] = 0
 
 for i in range(n):
-    if i <= coins[i]:
+    if coins[i] <= m:
         dp[coins[i]] = 1
 
 for i in range(1, m+1):
