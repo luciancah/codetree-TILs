@@ -2,21 +2,14 @@ n, m = map(int, input().split())
 coins = list(map(int, input().split()))
 
 # dp배열 -> 금액 / 코인의 개수
-dp = [0 for _ in range(m+1)]
+dp = [-1 for _ in range(m+1)]
 dp[0] = 0
-
-for i in range(n):
-    if coins[i] <= m:
-        dp[coins[i]] = 1
 
 for i in range(1, m+1):
     for j in range(n):
-        if i >= coins[j] and dp[i - coins[j]] != 0:
+        if i >= coins[j]:
+            if dp[i-coins[j]] == -1:
+                continue
             dp[i] = max(dp[i], dp[i - coins[j]] + 1)
 
-# print(dp)
-
-if dp[-1] == 0:
-    print('-1')
-else:
-    print(dp[-1])
+print(dp[-1])
