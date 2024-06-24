@@ -13,4 +13,4 @@ for i in range(1, m+1):
 if max(dp) == 0:
     print('-1')
 else:
-    print(max(dp))
+    print(dp[-1])
