@@ -1,5 +1,4 @@
 import sys
-INT_MAX = sys.maxsize
 
 n = int(input())
 arr = [0] + list(map(int, input().split()))
@@ -15,10 +14,13 @@ for i in range(1, n+1):
         if dp[i-1][j]:
             dp[i][j] = True
 
-ans = -sys.maxsize
+ans = 0
 for i in range(n):
     for j in range(1, m):
-        if dp[i][j] and j == m-j:
+        if dp[i][j] and (m - j * 2) in arr:
             ans = max(ans, j)
+
+# for i in range(n):
+#     print(*dp[i])
 
 print(ans)
