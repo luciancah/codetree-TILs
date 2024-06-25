@@ -10,8 +10,8 @@ sum_nums = sum(nums)
 for i in range(n):
     for j in range(n, -1, -1):
         if j >= i:
-            # if dp[j-i] == 1001:
-            #     continue
+            if dp[j-i] == 1000000:
+                continue
             sum_selected = dp[j-i] + nums[i]
             # print(i, j, sum_nums, sum_selected, sum_nums-dp[i])
             dp[j] = dp[i] if abs(abs(sum_nums - dp[j]) - dp[j]) <= abs(abs(sum_nums - sum_selected) - sum_selected) else sum_selected
