@@ -12,7 +12,7 @@ for i in range(n):
         if j >= i:
             sum_selected = dp[j-i] + nums[i]
             # print(i, j, sum_nums, sum_selected, sum_nums-dp[i])
-            dp[j] = dp[i] if abs(abs(sum_nums - dp[j]) - dp[j]) < abs(abs(sum_nums - sum_selected) - sum_selected) else sum_selected
+            dp[j] = dp[j] if abs(abs(sum_nums - dp[j]) - dp[j]) < abs(abs(sum_nums - sum_selected) - sum_selected) else sum_selected
 
 # print(dp)
 
