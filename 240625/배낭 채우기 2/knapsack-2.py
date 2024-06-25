@@ -12,15 +12,13 @@ for _ in range(n):
 # dp배열 : 무게 / 금액 / 개수 ?
 
 max_num = m // min(weights) + 1
-weights = [0] + weights
-values = [0] + values
 dp = [[-1 for _ in range(m+1)] for _ in range(max_num)]
 for i in range(max_num):
     dp[i][0] = 0
 
 for i in range(max_num):
     for j in range(1, m+1):
-        for k in range(i+1):
+        for k in range(i):
             if j >= weights[k]:
                 if dp[i][j-weights[k]] == -1:
                     continue
