@@ -17,4 +17,7 @@ for i in range(1, n+1):
                 continue
             dp[j] = min(dp[j], dp[j-quests[i][0]] + quests[i][1])
 
-print(min(dp[m:]))
+if len(dp[m:]):
+    print(min(dp[m:]))
+else:
+    print(-1)
