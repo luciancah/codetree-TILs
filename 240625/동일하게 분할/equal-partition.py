@@ -19,7 +19,7 @@ for j in range(n):
             continue
         dp[i] = 1
 
-ans = 'Yes' if dp[sum_arr // 2 + 1] else 'No'
+ans = 'Yes' if dp[sum_arr // 2] else 'No'
  
 # print(dp)
 print(ans)
