@@ -11,20 +11,14 @@ for _ in range(n):
 
 # dp배열 : 무게 / 금액 / 개수 ?
 
-max_num = m // min(weights) + 1
-dp = [[-1 for _ in range(m+1)] for _ in range(max_num)]
-for i in range(max_num):
-    dp[i][0] = 0
+dp = [-1 for _ in range(m+1)]
+dp[0] = 0
 
-for i in range(max_num):
-    for j in range(1, m+1):
-        for k in range(n):
-            if j >= weights[k]:
-                if dp[i][j-weights[k]] == -1:
-                    continue
-                dp[i][j] = max(dp[i][j], dp[i][j-weights[k]] + values[k])
+for j in range(1, m+1):
+    for k in range(n):
+        if j >= weights[k]:
+            if dp[j-weights[k]] == -1:
+                continue
+            dp[j] = max(dp[j], dp[j-weights[k]] + values[k])
 
-print(max(dp[-1]))
-
-# for i in range(max_num):
-#     print(*dp[i])
+print(max(dp))
