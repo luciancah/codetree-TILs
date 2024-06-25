@@ -16,7 +16,8 @@ for i in range(sum_arr, -1, -1):
             continue
         dp[i] = 1
 
-ans = 'Yes' if dp[sum_arr // 2] else 'No'
+ans = 'Yes' if dp[sum_arr // 2 + 1] else 'No'
+
 
 # print(dp)
 print(ans)
