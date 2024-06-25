@@ -1,7 +1,7 @@
 n, m = map(int, input().split())
 mat = []
 for _ in range(n):
-    mat.append(input())
+    mat.append(input().split())
 res = 0
 
 for i in range(n):
