@@ -7,6 +7,9 @@ res = 0
 for i in range(n):
     prev = mat[i][0]
     streak = 1
+    if streak >= m:
+        res += 1
+        continue
     for k in range(1, n):
         if prev == mat[i][k]:
             streak += 1
@@ -20,6 +23,9 @@ for i in range(n):
 for i in range(n):
     prev = mat[0][i]
     streak = 1
+    if streak >= m:
+        res += 1
+        continue
     for k in range(1, n):
         if prev == mat[k][i]:
             streak += 1
