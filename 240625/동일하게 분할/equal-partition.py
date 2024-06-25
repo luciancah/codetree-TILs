@@ -19,4 +19,4 @@ for i in range(sum_arr, -1, -1):
 ans = 'Yes' if dp[sum_arr // 2] else 'No'
 
 # print(dp)
-# print(ans)
+print(ans)
