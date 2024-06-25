@@ -12,6 +12,8 @@ for _ in range(n):
 # dp배열 : 무게 / 금액 / 개수 ?
 
 max_num = m // min(weights) + 1
+weights = [0] + weights
+values = [0] + values
 dp = [[-1 for _ in range(m+1)] for _ in range(max_num)]
 for i in range(max_num):
     dp[i][0] = 0
