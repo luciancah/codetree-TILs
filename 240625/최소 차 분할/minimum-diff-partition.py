@@ -26,17 +26,23 @@
 n = int(input())
 nums = list(map(int, input().split()))
 
-dp = [-10001 for _ in range(n + 1)]
-dp[0] = 0
-sum_nums = sum(nums)
+total_sum = sum(nums)
+max_sum = total_sum // 2
 
-for i in range(n):
-    for j in range(n, -1, -1):
-        if j >= i:
-            sum_selected = dp[j-i] + nums[i]
-            dp[j] = dp[j] if abs(abs(sum_nums - dp[j]) - dp[j]) < abs(abs(sum_nums - sum_selected) - sum_selected) else sum_selected
+# DP 테이블 초기화
+dp = [False] * (max_sum + 1)
+dp[0] = True
 
-for i in range(len(dp)):
-    dp[i] = abs(abs(sum_nums - dp[i]) - dp[i])
+# DP 테이블 채우기
+for num in nums:
+    for i in range(max_sum, num - 1, -1):
+        dp[i] |= dp[i - num]
 
-print(min(dp))
+# 최소 차이 찾기
+min_diff = total_sum
+for i in range(max_sum, -1, -1):
+    if dp[i]:
+        min_diff = min(min_diff, total_sum - 2 * i)
+        break
+
+print(min_diff)
