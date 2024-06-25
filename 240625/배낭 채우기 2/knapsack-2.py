@@ -18,7 +18,7 @@ for i in range(max_num):
 
 for i in range(max_num):
     for j in range(1, m+1):
-        for k in range(i % n):
+        for k in range(n):
             if j >= weights[k]:
                 if dp[i][j-weights[k]] == -1:
                     continue
