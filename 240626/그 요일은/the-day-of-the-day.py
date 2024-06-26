@@ -25,5 +25,5 @@ for i in range(m1, m2+1):
     ans += months[i]
 
 # print(ans)
-ans = ans - day_map[day] + 1
+ans = ans - day_map[day]
 print(ans//7 + 1)
