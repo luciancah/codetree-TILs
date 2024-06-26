@@ -11,7 +11,7 @@ day_map = {
 }
 months = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-ans = 0
+ans = 1
 for i in range(m1, m2+1):
     if m1 == m2:
         ans += d2 - d1 + 1
