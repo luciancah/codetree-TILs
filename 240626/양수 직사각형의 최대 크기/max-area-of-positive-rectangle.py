@@ -5,19 +5,21 @@ def in_range(x0, y0, x1, y1):
     return 0 <= x0 < n and 0 <= x1 <= n and 0 <= y0 < m and 0 <= y1 < m
 
 def is_positive(x0, y0, x1, y1):
-    return 0 <= x0 and 0 <= x1 and 0 <= y0 and 0 <= y1
+    for i in range(x0, x1 + 1):
+        for j in range(y0, y1 + 1):
+            if grid[i][j] < 0:
+                return False
 
-max_area = -1
+    return True
+
+max_ans = -1
 for x0 in range(n):
     for y0 in range(m):
-        area = 0
-        for x1 in range(n):
-            for y1 in range(m):
+        for x1 in range(x0, n):
+            for y1 in range(y0, m):
                 if not in_range(x0, y0, x1, y1):
                     break
-                if not is_positive(x0, y0, x1, y1):
-                    break
-        area = (x1-1)*(y1-1) if (x1-1)*(y1-1) >= 0 else 0
-        max_area = max(area, max_area)
-
-print(max_area)
+                if is_positive(x0, y0, x1, y1):
+                    max_ans = max((x1-x0+1)*(y1-y0+1), max_ans)
+    
+print(max_ans)
