@@ -1,7 +1,7 @@
 x, y = map(int, input().split())
 
 def is_palindrome(num):
-    return list(str(num)) == list(reversed(str_num[:]))
+    return list(str(num)) == list(reversed(list(str(num))))
 
 count = 0
 for i in range(x, y+1):
