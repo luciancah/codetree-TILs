@@ -1,13 +1,13 @@
 m1, d1, m2, d2 = map(int, input().split())
 day = input()
 day_map = {
-    'Mon': 1,
-    'Tue': 2,
-    'Wed': 3,
-    'Thu': 4,
-    'Fri': 5,
-    'Sat': 6,
-    'Sun': 7
+    'Mon': 0,
+    'Tue': 1,
+    'Wed': 2,
+    'Thu': 3,
+    'Fri': 4,
+    'Sat': 5,
+    'Sun': 6
 }
 months = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
@@ -25,5 +25,5 @@ for i in range(m1, m2+1):
     ans += months[i]
 
 # print(ans)
-ans = ans - day_map[day] + 1 if day_map[day] != 1 else ans - day_map[day]
+ans = ans - day_map[day] + 1
 print(ans//7 + 1)
