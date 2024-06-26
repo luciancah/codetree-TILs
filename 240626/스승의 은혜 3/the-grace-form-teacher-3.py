@@ -11,7 +11,7 @@ for i in range(n):
             price += gifts[j][0] // 2 + gifts[j][1]
         else:
             price += gifts[j][0] + gifts[j][1]
-        if price > m:
+        if price >= m:
             ans = j
             # print(i, j, price, m, ans, max_ans)
             break
