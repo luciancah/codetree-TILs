@@ -13,6 +13,9 @@ months = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 ans = 0
 for i in range(m1, m2+1):
+    if m1 == m2:
+        ans += d2 - d1 + 1
+        continue
     if i == m1:
         ans += months[i] - d1
         continue
@@ -22,5 +25,4 @@ for i in range(m1, m2+1):
     ans += months[i]
 
 # print(ans)
-
-print((ans + day_map[day]) // 7)
+print((ans - day_map[day]+1) // 7 + 1)
