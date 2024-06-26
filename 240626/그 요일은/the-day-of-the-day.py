@@ -23,4 +23,4 @@ for i in range(m1, m2+1):
 
 # print(ans)
 
-print((ans + day_map[day]-1) // 7)
+print((ans + day_map[day]) // 7)
