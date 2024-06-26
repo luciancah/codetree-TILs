@@ -1,38 +1,32 @@
 n, m = map(int, input().split())
 gifts = [list(map(int, input().split())) for _ in range(n)]
-gifts2 = gifts[:]
-# gifts.sort(key=lambda x: (x[0]+x[1]))
-gifts2.sort(key=lambda x: (x[0] // 2 + x[1]))
 
-# max_ans = 0
-# for i in range(n):
-#     price = 0
-#     ans = n
-#     for j in range(n):
-#         if i == j:
-#             price += gifts[j][0] // 2 + gifts[j][1]
-#         else:
-#             price += gifts[j][0] + gifts[j][1]
-#         if price > m:
-#             ans = j
-#             # print(i, j, price, m, ans, max_ans)
-#             break
-#     max_ans = max(ans, max_ans)
+ans = 0
 
-max_ans2 = 0
 for i in range(n):
-    price = 0
-    ans = n
+    temp = [0] * n
     for j in range(n):
-        if i == j:
-            price += gifts2[j][0] // 2 + gifts2[j][1]
-        else:
-            price += gifts2[j][0] + gifts2[j][1]
-        if price > m:
-            ans = j
-            # print(i, j, price, m, ans, max_ans)
+        temp[j] = sum(gifts[j])
+    temp[i] = gifts[i][0] // 2 + gifts[i][1]
+    
+    temp.sort()
+    
+    sum_money = 0
+    for j in range(n):
+        sum_money += temp[j]
+        if sum_money > m:
+            ans = max(ans, j)
             break
-    max_ans2 = max(ans, max_ans2)
 
+    # student = 0
+    # cnt = 0
 
-print(max_ans2)
+    # for j in range(n):
+    #     if cnt + temp[j] > m:
+    #         break
+    #     cnt += temp[j]
+    #     student += 1
+
+    # ans = max(ans, student)
+
+print(ans)
