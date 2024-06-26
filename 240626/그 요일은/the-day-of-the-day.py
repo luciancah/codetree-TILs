@@ -17,7 +17,7 @@ for i in range(m1, m2+1):
         ans += d2 - d1 + 1
         continue
     if i == m1:
-        ans += months[i] - d1 - 1
+        ans += months[i] - d1
         continue
     if i == m2:
         ans += d2
