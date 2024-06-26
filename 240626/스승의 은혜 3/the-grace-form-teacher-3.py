@@ -8,11 +8,12 @@ for i in range(n):
     ans = n
     for j in range(n):
         if i == j:
-            price += gifts[i][0] // 2 + gifts[i][1]
+            price += gifts[j][0] // 2 + gifts[j][1]
         else:
-            price += gifts[i][0] + gifts[i][1]
+            price += gifts[j][0] + gifts[j][1]
         if price > m:
             ans = j
+            # print(i, j, price, m, ans, max_ans)
             break
     max_ans = max(ans, max_ans)
 
