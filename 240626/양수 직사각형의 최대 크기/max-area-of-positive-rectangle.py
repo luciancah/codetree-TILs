@@ -13,15 +13,17 @@ for i in range(1,n+1):
 
 def is_positive_rectangle(sx,sy,ex,ey,size):
     positive = positive_dp[ex][ey]-positive_dp[ex][sy-1]-positive_dp[sx-1][ey] + positive_dp[sx-1][sy-1]
+    print(sx,sy,ex,ey)
+    print(positive)
     if size == positive:
         return True
     return False
 
 ans = -1
 for ax in range(1,n):
-    for ay in range(1,n):
+    for ay in range(1,m):
         for bx in range(ax,n+1):
-            for by in range(ay,n+1):
+            for by in range(ay,m+1):
                 if ax <= bx or ay <= by:    
                     row = abs(ax-bx) + 1
                     col = abs(ay-by) + 1
