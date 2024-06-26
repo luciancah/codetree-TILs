@@ -17,8 +17,7 @@ for x0 in range(n):
                     break
                 if not is_positive(x0, y0, x1, y1):
                     break
-                area += 1
-        if area != 0 and area / n == m:
-            max_area = max(area, max_area)
+        area = (x1-1)*(y1-1) if (x1-1)*(y1-1) >= 0 else 0
+        max_area = max(area, max_area)
 
 print(max_area)
