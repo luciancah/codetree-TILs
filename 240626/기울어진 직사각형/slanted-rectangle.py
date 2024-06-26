@@ -14,8 +14,10 @@ def get_max_sum_in_range(row, col, k):
     # print(y, x, k)
     k_range_max = 0
     for x in range(col - k + 2, col):
+        # print(x)
         range_max = 0
         i = 0
+        dx, dy = dxs[0], dys[0]
         x_offset = x
         y_offset = y
         while True:
