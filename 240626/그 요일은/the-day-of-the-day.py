@@ -25,4 +25,5 @@ for i in range(m1, m2+1):
     ans += months[i]
 
 # print(ans)
-print((ans - day_map[day]) // 7 + 1)
+ans = ans - day_map[day] + 1 if day_map[day] != 1 else ans - day_map[day]
+print(ans//7 + 1)
