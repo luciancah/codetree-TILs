@@ -14,12 +14,12 @@ months = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 ans = 0
 for i in range(m1, m2+1):
     if m1 == m2:
-        ans += d2 - d1 + 1
+        ans += d2 - d1
         continue
-    if i == m1:
+    elif i == m1:
         ans += months[i] - d1
         continue
-    if i == m2:
+    elif i == m2:
         ans += d2
         continue
     ans += months[i]
