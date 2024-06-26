@@ -35,4 +35,4 @@ for i in range(n):
     max_ans2 = max(ans, max_ans2)
 
 
-print(max(max_ans, max_ans2))
+print(max_ans2)
