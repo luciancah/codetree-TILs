@@ -7,7 +7,7 @@ def in_range(x0, y0, x1, y1):
 def is_positive(x0, y0, x1, y1):
     for i in range(x0, x1 + 1):
         for j in range(y0, y1 + 1):
-            if grid[i][j] < 0:
+            if grid[i][j] <= 0:
                 return False
 
     return True
