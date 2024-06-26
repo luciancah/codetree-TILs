@@ -7,7 +7,7 @@ def in_range(x0, y0, x1, y1):
 def is_positive(x0, y0, x1, y1):
     return 0 <= x0 and 0 <= x1 and 0 <= y0 and 0 <= y1
 
-max_area = 0
+max_area = -1
 for x0 in range(n):
     for y0 in range(m):
         area = 0
@@ -18,6 +18,7 @@ for x0 in range(n):
                 if not is_positive(x0, y0, x1, y1):
                     break
                 area += 1
-        max_area = max(area, max_area)
+        if area != 0 and area / n == m:
+            max_area = max(area, max_area)
 
 print(max_area)
