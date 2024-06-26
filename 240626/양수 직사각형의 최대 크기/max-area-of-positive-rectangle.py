@@ -21,14 +21,13 @@ def is_positive_rectangle(sx,sy,ex,ey,size):
 ans = -1
 for ax in range(1,n+1):
     for ay in range(1,m+1):
-        for bx in range(1,n+1):
-            for by in range(1,m+1):
-                if ax <= bx or ay<=by:
-                    row = abs(ax-bx) + 1
-                    col = abs(ay-by) + 1
-                    size = row * col
-                    if is_positive_rectangle(ax,ay,bx,by,size):
-                        ans = max(ans, size)
+        for bx in range(ax,n+1):
+            for by in range(by,m+1):
+                row = abs(ax-bx) + 1
+                col = abs(ay-by) + 1
+                size = row * col
+                if is_positive_rectangle(ax,ay,bx,by,size):
+                    ans = max(ans, size)
 print(ans)
 
 
