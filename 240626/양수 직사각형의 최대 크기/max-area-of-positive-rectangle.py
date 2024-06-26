@@ -55,7 +55,7 @@ def is_positive_rectangle(sx,sy,ex,ey):
         return True
     return False
 
-ans = 0
+ans = -1
 for ax in range(1,n):
     for ay in range(1,n):
         for bx in range(ax,n+1):
