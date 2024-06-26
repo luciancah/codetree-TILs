@@ -22,12 +22,12 @@ for ax in range(1,n):
     for ay in range(1,n):
         for bx in range(ax,n+1):
             for by in range(ay,n+1):
-                row = abs(ax-bx) + 1
-                col = abs(ay-by) + 1
-                size = row * col
-                if is_positive_rectangle(ax,ay,bx,by,size):
-                    ans = max(ans, size)
-                    
+                if ax <= bx or ay <= by:    
+                    row = abs(ax-bx) + 1
+                    col = abs(ay-by) + 1
+                    size = row * col
+                    if is_positive_rectangle(ax,ay,bx,by,size):
+                        ans = max(ans, size)
 print(ans)
 
 
