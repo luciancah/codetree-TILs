@@ -5,7 +5,7 @@ gifts.sort(key=lambda x: (x[0], x[0]+x[1]))
 max_ans = 0
 for i in range(n):
     price = 0
-    ans = 0
+    ans = n
     for j in range(n):
         if i == j:
             price += gifts[i][0] // 2 + gifts[i][1]
