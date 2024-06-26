@@ -13,8 +13,6 @@ for i in range(1,n+1):
 
 def is_positive_rectangle(sx,sy,ex,ey,size):
     positive = positive_dp[ex][ey]-positive_dp[ex][sy-1]-positive_dp[sx-1][ey] + positive_dp[sx-1][sy-1]
-    # print(sx,sy,ex,ey)
-    # print(positive)
     if size == positive:
         return True
     return False
