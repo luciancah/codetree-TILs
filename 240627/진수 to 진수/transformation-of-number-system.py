@@ -1,15 +1,13 @@
 a, b = map(int, input().split())
 n = input()
 
-num = 0
-for i in range(len(n)-1, -1, -1):
-    num += int(n[i]) * (a ** i)
-
-# print(num)
+num = int(n, a)
 ans = []
 
 while num > 0:
     ans.append(str(num % b))
     num = num // b
+
+ans.reverse()
 
 print(''.join(ans))
