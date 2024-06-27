@@ -1,19 +1,15 @@
+from collections import defaultdict
+
 n = int(input())
-dots = [list(map(int, input().split())) for _ in range(n)]
-# offset = 10**9
+arr = [list(map(int, input().split())) for _ in range(n)]
 
-dots.sort(key=lambda x:(x[0], x[1]))
-ans = []
-
-cache = 1000000001
+dots = defaultdict(int)
 for i in range(n):
-    flag = True
-    if dots[i][0] != cache:
-        ans.append(dots[i])
-        cache = dots[i][0]
+    d = arr[i]
+    if dots[d[0]]:
+        if dots[d[0]] > d[1]:
+            dots[d[0]] = d[1]
+    else:
+        dots[d[0]] = d[1]
 
-ans2 = 0
-for i in range(len(ans)):
-    ans2 += ans[i][1]
-
-print(ans2)
+print(sum(list(dots.values())))
