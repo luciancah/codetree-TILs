@@ -2,7 +2,7 @@ def search_section(x, y, dest_x, dest_y):
     # print(x, y, dest_x, dest_y)
     for i in range(y, dest_y + 1):
         for j in range(x, dest_x + 1):
-            if mat[i][j] < 0:
+            if mat[i][j] <= 0:
                 return 0
     return (dest_x - x + 1) * (dest_y - y + 1)
 
