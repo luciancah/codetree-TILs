@@ -21,7 +21,7 @@ def calc():
 ans = -sys.maxsize
 def recur(count):
     global ans
-    if count == len(exp):
+    if count == 6:
         ans = max(ans, calc())
         return
     
