@@ -3,7 +3,7 @@ from itertools import product
 
 arr = input() + ' '
 alps = 'abcdef'
-mapper = defaultdict(str)
+mapper = defaultdict(int)
 # mapper = {
 #     'a': 0,
 #     'b': 1,
@@ -20,8 +20,11 @@ for i in range(len(arr)):
         c += 1
 
 # print(count_nums)
+# print(mapper)
 
 prod = list(product([1, 2, 3, 4], repeat=len(mapper)))
+
+# print(product)
 
 def calc(original, operator, num):
     if operator == '-':
