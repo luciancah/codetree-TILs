@@ -22,15 +22,17 @@ def recur(count):
                 dist = max(dist, calc_dist(selected[i], selected[j]))
         ans = min(ans, dist)
         return
-    if count == m:
+    if count == n:
         return
     
-    for i in range(count, n):
-        if dots[i] not in selected:
-            selected.append(dots[i])
-            recur(count + 1)
-            selected.pop()
-            recur(count + 1)
+    for i in range(n):
+        # if dots[i] not in selected:
+        selected.append(dots[i])
+        recur(count + 1)
+        selected.pop()
+        recur(count + 1)
+
+    return
 
 recur(0)
 print(ans)
