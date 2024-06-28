@@ -15,6 +15,7 @@ def recur(row):
     if len(selected) == n:
         ans = max(ans, min(selected))
         return
+        
     
     for i in range(n):
         if not visited[i]:
