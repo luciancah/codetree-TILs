@@ -1,69 +1,31 @@
-import sys
-from collections import defaultdict
-from itertools import product
+nums = [0 for _ in range(6)]
+exp = input()
 
-arr = input()
-alps = 'abcdef'
-mapper = defaultdict(str)
-# mapper = {
-#     'a': 0,
-#     'b': 1,
-#     'c': 2,
-#     'd': 3,
-#     'e': 4,
-#     'f': 5
-# }
+def conv(char):
+    # a -> 0, f -> 5
+    return ord(char) - ord('a')
 
-c = 0
-for i in range(len(arr)):
-    if arr[i] in alps:
-        if arr[i] in mapper.keys():
-            continue
-        mapper[arr[i]] = c
-        c += 1
-        
+def calc():
+    value = nums[conv(exp[0])]
+    for i in range(2, len(exp), 2):
+        if exp[i-1] == '+':
+            value += nums[conv(exp[i])]
+        elif exp[i-1] == '-':
+            value -= nums[conv(exp[i])]
+        else:
+            value *= nums[conv(exp[i])]
+    return value
 
-# print(mapper)
-
-prod = list(product([1, 2, 3, 4], repeat=len(mapper)))
-
-# print(prod)
-
-def calc(original, operator, num):
-    if operator == '-':
-        return original-num
-    elif operator == '*':
-        return original*num
-    elif operator == '+':
-        return original+num
-
-
-# ans = 0
-res = []
-def recur(ans, count, p):
-    # print(count)
-    if count+1 >= len(arr):
-        res.append(ans)
-        # print('asdf')
-        # print(ans, count)
+ans = 0
+def recur(count):
+    global ans
+    if count == len(exp):
+        ans = max(ans, calc())
         return
     
-    if count == 0:
-        ans = p[mapper[arr[count]]]
-        # print('1', ans)
-        recur(ans, count+1, p)
-    if count % 2 == 1:
-        ans = calc(ans, arr[count], p[mapper[arr[count+1]]])
+    for i in range(1, 5):
+        nums[count] = i
+        recur(count+1)
 
-        # print('2', ans)
-        recur(ans, count+2, p)
-
-if len(arr) == 1:
-    print('4')
-    sys.exit()
-
-for p in prod:
-    # print('------------')
-    recur(0, 0, p)
-
-print(max(res))
+recur(0)
+print(ans)
