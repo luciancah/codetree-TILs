@@ -32,7 +32,7 @@ def calc(original, operator, num):
 res = []
 def recur(ans, count, p):
     # print(count)
-    if count+1 == len(arr):
+    if count+1 >= len(arr):
         res.append(ans)
         # print('asdf')
         # print(ans, count)
