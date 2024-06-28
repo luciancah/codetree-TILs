@@ -7,10 +7,8 @@ def recur(cnt, xidx, yidx, selected):
     global ans
     if cnt == n**2:
         return
-    # if xidx == n and yidx == n:
-    #     return
+    
     if len(selected) == n:
-        # print(ans)
         ans = max(ans, min(selected))
         return
 
@@ -29,6 +27,8 @@ def recur(cnt, xidx, yidx, selected):
     selected.append(grid[xidx][yidx])
     recur(cnt+1, xidx, yidx, selected)
     selected.pop()
+
+    return
 
 recur(0, 0, 0, [])
 print(ans)
