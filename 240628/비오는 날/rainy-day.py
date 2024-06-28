@@ -1,8 +1,11 @@
 n = int(input())
-days = [list(map(str, input().split())) for _ in range(n)]
+arr = [list(map(str,input().split())) for _ in range(n)]
 
-days.sort(key=lambda x:x[0])
-for i in range(n):
-    if days[i][2] == 'Rain':
-        print(' '.join(days[i]))
+# def convert_day(date):
+#     year,month,day = date.split()
+
+arr.sort(key=lambda x:x[0])
+for a,b,c in arr:
+    if c == 'Rain':
+        print(a,b,c)
         break
