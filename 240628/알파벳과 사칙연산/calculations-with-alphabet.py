@@ -1,3 +1,4 @@
+import sys
 from collections import defaultdict
 from itertools import product
 
@@ -16,15 +17,17 @@ mapper = defaultdict(str)
 c = 0
 for i in range(len(arr)):
     if arr[i] in alps:
+        if arr[i] in mapper.keys():
+            continue
         mapper[arr[i]] = c
         c += 1
+        
 
-# print(count_nums)
 # print(mapper)
 
 prod = list(product([1, 2, 3, 4], repeat=len(mapper)))
 
-# print(product)
+# print(prod)
 
 def calc(original, operator, num):
     if operator == '-':
@@ -54,6 +57,10 @@ def recur(ans, count, p):
 
         # print('2', ans)
         recur(ans, count+2, p)
+
+if len(arr) == 1:
+    print('4')
+    sys.exit()
 
 for p in prod:
     # print('------------')
