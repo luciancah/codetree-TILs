@@ -1,3 +1,5 @@
+import sys
+
 nums = [0 for _ in range(6)]
 exp = input()
 
@@ -16,7 +18,7 @@ def calc():
             value *= nums[conv(exp[i])]
     return value
 
-ans = 0
+ans = -sys.maxsize
 def recur(count):
     global ans
     if count == len(exp):
