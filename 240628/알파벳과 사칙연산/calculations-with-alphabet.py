@@ -1,9 +1,9 @@
 from collections import defaultdict
 from itertools import product
 
-arr = input() + ' '
+arr = input()
 alps = 'abcdef'
-mapper = defaultdict(int)
+mapper = defaultdict(str)
 # mapper = {
 #     'a': 0,
 #     'b': 1,
