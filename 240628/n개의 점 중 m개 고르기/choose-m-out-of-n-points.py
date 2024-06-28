@@ -1,5 +1,7 @@
 import sys
 
+sys.setrecursionlimit(10000)
+
 n, m = map(int, input().split())
 dots = [list(map(int, input().split())) for _ in range(n)]
 
@@ -11,8 +13,15 @@ selected = []
 
 def recur(count):
     global ans
+    dist = 0
+    if len(selected) == m:
+        # print(selected)
+        for i in range(m):
+            for j in range(i+1, m):
+                dist = max(dist, calc_dist(dots[i], dots[j]))
+                ans = min(ans, dist)
+        return
     if count == m:
-        print(selected)
         return
     
     for i in range(n):
@@ -22,3 +31,4 @@ def recur(count):
         recur(count + 1)
 
 recur(0)
+print(ans)
