@@ -3,21 +3,25 @@ from itertools import product
 
 arr = input() + ' '
 alps = 'abcdef'
-count_nums = defaultdict(str)
-mapper = {
-    'a': 0,
-    'b': 1,
-    'c': 2,
-    'd': 3,
-    'e': 4,
-    'f': 5
-}
+mapper = defaultdict(str)
+# mapper = {
+#     'a': 0,
+#     'b': 1,
+#     'c': 2,
+#     'd': 3,
+#     'e': 4,
+#     'f': 5
+# }
 
+c = 0
 for i in range(len(arr)):
     if arr[i] in alps:
-        count_nums[arr[i]] = 0
+        mapper[arr[i]] = c
+        c += 1
 
-prod = list(product([1, 2, 3, 4], repeat=len(count_nums)))
+# print(count_nums)
+
+prod = list(product([1, 2, 3, 4], repeat=len(mapper)))
 
 def calc(original, operator, num):
     if operator == '-':
