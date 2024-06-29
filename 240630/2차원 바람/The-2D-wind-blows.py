@@ -25,35 +25,36 @@ def shift_clockwise(r1, c1, r2, c2):
         else:
             mat[l][c1] = mat[l+1][c1]
 
+def get_point_mean(i, j):
+    res = mat[i][j]
+    if i > 0:
+        res += mat[i-1][j]
+    if i < n-1:
+        res += mat[i+1][j]
+    if j > 0:
+        res += mat[i][j-1]
+    if j < m-1:
+        res += mat[i][j+1]
+    return res
+
 def transform_mean(r1, c1, r2, c2):
     buf = []
     for i in range(r1, r2 + 1):
         row = []
         for j in range(c1, c2 + 1):
             div = 5
-            # print(i, j, n, m)
             if i == 0 or i == n - 1:
                 div -= 1
             if j == 0 or j == m - 1:
                 div -= 1
-            # print('div', div)
-            row.append(sum([
-                mat[k][l]
-                for k in range (n)
-                for l in range (m)
-                if abs(k-i) + abs(l-j) <= 1
-                ]) // div)
-            # print(sum([
+            row.append(get_point_mean(i, j) // div)
+            # row.append(sum([
             #     mat[k][l]
             #     for k in range (n)
             #     for l in range (m)
-            #     if abs(k-i) + abs(l-j) == 1
+            #     if abs(k-i) + abs(l-j) <= 1
             #     ]) // div)
         buf.append(row)
-    # for l in buf:
-    #     print(*l)
-    # for l in mat:
-    #     print(*l)
     for i in range(r1, r2 + 1):
         for j in range(c1, c2 + 1):
             mat[i][j] = buf[i-r1][j-c1]
