@@ -18,7 +18,7 @@ def shift(buf):
     res = buf[-1] + res
     return res
 
-min_len = 10
+min_len = len(get_run_length(A))
 
 for _ in range(len(A) + 1):
     curr = get_run_length(A)
