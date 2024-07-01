@@ -23,7 +23,15 @@ dp[1][1] = arr[1]
 dp[2][0] = arr[2]
 
 for i in range(2, n+1):
-    for j in range(4):
+    for j in range(1, 4):
+        if i == 4 and j == 0:
+            print(dp[i-1][j-1] + arr[i], dp[i-2][j] + arr[i])
         dp[i][j] = max(dp[i-1][j-1] + arr[i], dp[i-2][j] + arr[i])
     
-print(dp[-1][-1])
+# print(dp)
+print(max(dp[-1]))
+# 0 [0, x, x, x]
+# 1 [0, 1, x, x]
+# 2 [2, 2, 3, x]
+# 3 [3, 5, 5, 6]
+# 4 [10, 7, 9, 9]
