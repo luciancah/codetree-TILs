@@ -10,7 +10,6 @@ def get_run_length(buf):
             i += 1
         res += c + str(i-k+1)
         i += 1
-    # print(res)
     return res
 
 def shift(buf):
@@ -24,7 +23,6 @@ for _ in range(len(A)):
     curr = get_run_length(A)
     if len(curr) < min_len:
         min_len = len(curr)
-        # print(curr)
     A = shift(A)
 
 print(min_len)
